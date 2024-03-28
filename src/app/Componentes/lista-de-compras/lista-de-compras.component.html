@@ -16,8 +16,13 @@
       <input type="text" [id]="'item-' + i" name="item{{ i }}" [(ngModel)]="itensAdicionais[i][0]" required (keydown.control.Enter)="adicionarItem($event)"><br>
     </div>
 
-    <button type="submit" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="enviarFormulario()">Enviar</button>
+    <button type="submit" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="enviarItens()">Enviar</button>
     <button type="button" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="adicionarItem($event)">Adicionar Item</button>
 
   </form>
 </section>
+
+<app-meu-modal 
+  *ngIf="modalAberto" 
+  (fechar)="fecharModal($event)">
+</app-meu-modal>

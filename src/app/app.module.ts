@@ -11,12 +11,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AppComponent } from './app.component';
 import { ListaDeComprasComponent } from './Componentes/lista-de-compras/lista-de-compras.component';
 import { ReciboComponent } from './Componentes/recibo/recibo.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MeuModalComponent } from './meu-modal/meu-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaDeComprasComponent,
     ReciboComponent,
+    MeuModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { ReciboComponent } from './Componentes/recibo/recibo.component';
     MatIconModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

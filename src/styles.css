@@ -64,26 +64,3 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-progress-spinner.mat-blue circle, .mat-spinner.mat-blue circle {
     stroke: #3f51b5 !important;
 }
-
-/*==================
- DIALOG
-==================*/
-.dialog {
-    height: 100%;
-    position: relative;
-}
-.title-dialog h3 {
-    color: #838383;
-    font-size: 20px;
-}
-.close-dialog mat-icon {
-    float: right;
-    color: #838383;
-    cursor: pointer;
-}
-.dialog-confirmacao-lista mat-dialog-container {
-    width: 611px;
-    margin: 0 auto;
-    height: auto !important;
-    max-width: 100%;
-}

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-lista-de-compras',
@@ -12,11 +11,11 @@ export class ListaDeComprasComponent {
 
   isLoadingRequest: boolean = false;
   itensAdicionais: string[][] = [['']];
+  modalAberto: boolean = false;
 
   constructor(
     private router: Router, 
     private http: HttpClient,
-    public dialog: MatDialog,
   ) {}
 
   adicionarItem(event?: any): void {
@@ -33,16 +32,34 @@ export class ListaDeComprasComponent {
     }
   }
 
-  enviarFormulario(): void {
-    this.http.post<any>('sua/api/url', this.itensAdicionais).subscribe({
-      next: (response) => {
-        console.log('Lista enviada com sucesso para a API:', response);
-      },
-      error: (error) => {
-        console.error('Erro ao enviar lista para a API:', error);
-      }
-    });
-    this.router.navigateByUrl('/recibo', { state: { itensAdicionais: this.itensAdicionais } });
+  enviarItens(enviarLista?: boolean): void {
+    if (!this.modalAberto) {
+      this.abrirModal();
+      return;
+    } 
+    if (enviarLista) {
+      this.modalAberto = false;
+      this.http.post<any>('sua/api/url', this.itensAdicionais).subscribe({
+        next: (response) => {
+          console.log('Lista enviada com sucesso para a API:', response);
+        },
+        error: (error) => {
+          console.error('Erro ao enviar lista para a API:', error);
+        }
+      });
+      this.router.navigateByUrl('/recibo', { state: { itensAdicionais: this.itensAdicionais } });
+      return;
+    } else {
+      this.modalAberto = false;
+      return;
+    }
   }
-  
+
+  abrirModal() {
+    this.modalAberto = true;
+  }
+
+  fecharModal(enviarLista: boolean) {
+    this.enviarItens(enviarLista);
+  }
 }
