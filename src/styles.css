@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+body, html {
+    background-color: black;
+    color: white;
+}
+/*==================
+ BUTTON
+==================*/
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #151b1e;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-primary {
+    color: #FFF;
+    background-color: #7020d8;
+    border-color: #6f00ff;
+}
+
+.border-radius-buttons {
+    border-radius: 4px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*==================
+ LOADING
+==================*/
+.loading,
+.loadingheigth100 {
+    background: #00000054;
+    position: absolute;
+    width: 100%;
+    z-index: 101;
+    padding-top: 25vh;
+    display: flex;
+    justify-content: center;
+}
+.loading {
+    height: 94.3%;
+}
+.loadingheigth100 {
+    height: 100%;
+}
+.loading > mat-spinner svg > .mat-progress-spinner circle, .mat-spinner circle,
+.loadingheigth100 > mat-spinner svg > .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #FFF !important;
+}
+@media screen and (max-width: 1099px){
+    .table-7-collumns {
+        width: 950px !important;
+    }
+}
+.mat-progress-spinner.mat-blue circle, .mat-spinner.mat-blue circle {
+    stroke: #3f51b5 !important;
+}
+
+/*==================
+ DIALOG
+==================*/
+.dialog {
+    height: 100%;
+    position: relative;
+}
+.title-dialog h3 {
+    color: #838383;
+    font-size: 20px;
+}
+.close-dialog mat-icon {
+    float: right;
+    color: #838383;
+    cursor: pointer;
+}
+.dialog-confirmacao-lista mat-dialog-container {
+    width: 611px;
+    margin: 0 auto;
+    height: auto !important;
+    max-width: 100%;
+}

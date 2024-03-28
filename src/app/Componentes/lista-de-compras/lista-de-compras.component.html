@@ -1,0 +1,23 @@
+<div class="loading" *ngIf="isLoadingRequest">
+  <mat-spinner [diameter]="70"></mat-spinner>
+</div>
+
+<header class="header">
+  <div class="logo">
+    <img src="/assets/img-project/logo_cliente.jpg" alt="logo">
+  </div>
+</header>
+
+<section class="lista">
+  <form>
+
+    <div *ngFor="let itemArray of itensAdicionais; let i = index">
+      <label for="item{{ i }}" style="color: black;">Item {{ i+1 }}</label><br>
+      <input type="text" [id]="'item-' + i" name="item{{ i }}" [(ngModel)]="itensAdicionais[i][0]" required (keydown.control.Enter)="adicionarItem($event)"><br>
+    </div>
+
+    <button type="submit" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="enviarFormulario()">Enviar</button>
+    <button type="button" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="adicionarItem($event)">Adicionar Item</button>
+
+  </form>
+</section>
