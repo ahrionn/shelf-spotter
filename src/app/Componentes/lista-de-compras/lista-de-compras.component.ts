@@ -12,6 +12,7 @@ export class ListaDeComprasComponent {
   isLoadingRequest: boolean = false;
   itensAdicionais: string[][] = [['']];
   modalAberto: boolean = false;
+  apiUrl = 'http://localhost:3000';
 
   constructor(
     private router: Router, 
@@ -39,7 +40,7 @@ export class ListaDeComprasComponent {
     } 
     if (enviarLista) {
       this.modalAberto = false;
-      this.http.post<any>('sua/api/url', this.itensAdicionais).subscribe({
+      this.http.post<any>(`${this.apiUrl}/api/listaItens`, this.itensAdicionais).subscribe({
         next: (response) => {
           console.log('Lista enviada com sucesso para a API:', response);
         },
