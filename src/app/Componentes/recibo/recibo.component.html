@@ -1,7 +1,13 @@
-<h2>Recibo da Lista de Compras</h2>
+<header class="header">
+  <div class="logo">
+    <img src="/assets/img-project/logo_cliente.jpg" alt="logo">
+  </div>
+</header>
 
-<ul>
-  <li *ngFor="let itemArray of itensAdicionais; let i = index">
-    <strong>Item {{ i + 1 }}:</strong> {{ itemArray[0] }}
-  </li>
-</ul>
+<section class="lista">
+  <ul>
+    <li *ngFor="let itemArray of itensAdicionais; let i = index">
+      <strong>Item {{ i + 1 }}:</strong> {{ itemArray[0] }}
+    </li>
+  </ul>
+</section>
