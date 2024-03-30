@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-meu-modal',
-  templateUrl: './meu-modal.component.html',
-  styleUrls: ['./meu-modal.component.css']
+  selector: 'app-modal-confirmacao',
+  templateUrl: './modal-confirmacao.component.html',
+  styleUrls: ['./modal-confirmacao.component.css']
 })
-export class MeuModalComponent {
+export class ModalConfirmacaoComponent {
   @Output() fechar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   fecharModal(enviarLista: boolean) {

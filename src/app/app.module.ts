@@ -12,14 +12,14 @@ import { AppComponent } from './app.component';
 import { ListaDeComprasComponent } from './Componentes/lista-de-compras/lista-de-compras.component';
 import { ReciboComponent } from './Componentes/recibo/recibo.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MeuModalComponent } from './meu-modal/meu-modal.component';
+import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaDeComprasComponent,
     ReciboComponent,
-    MeuModalComponent,
+    ModalConfirmacaoComponent,
   ],
   imports: [
     BrowserModule,
