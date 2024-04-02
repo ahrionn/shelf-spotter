@@ -10,5 +10,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    margin: 20px 0;
+}
+
+.lista ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.grupo {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 13px 15px;
+}
+
+.grupo h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.item {
+    color: #666;
+    font-size: 16px;
+    text-align: center; /* Centralizar o texto */
+}
+
+.item:first-child {
+    margin-top: 10px; /* Adicionar espaçamento no topo do primeiro item */
+}
+
+.item:last-child {
+    margin-bottom: 10px; /* Adicionar espaçamento na parte inferior do último item */
 }

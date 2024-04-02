@@ -6,8 +6,13 @@
 
 <section class="lista">
   <ul>
-    <li *ngFor="let itemArray of itensAdicionais; let i = index">
-      <strong>Item {{ i + 1 }}:</strong> {{ itemArray[0] }}
-    </li>
+    <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+      <li class="grupo">
+        <h2>Corredor {{ grupo.corredor }}</h2>
+        <div *ngFor="let item of grupo.itens" class="item">
+          {{ item.nome }}
+        </div>
+      </li>
+    </ng-container>
   </ul>
 </section>

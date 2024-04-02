@@ -13,7 +13,10 @@
 
     <div *ngFor="let itemArray of itensAdicionais; let i = index">
       <label for="item{{ i }}" style="color: black;">Item {{ i+1 }}</label><br>
-      <input type="text" [id]="'item-' + i" name="item{{ i }}" [(ngModel)]="itensAdicionais[i][0]" required (keydown.control.Enter)="adicionarItem($event)"><br>
+      <select (change)="adicionarItem($event)">
+        <option value=""></option>
+        <option *ngFor="let item of itensEstoque" [value]="item.nome">{{ item.nome }}</option>
+      </select>
     </div>
 
     <button type="submit" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="enviarItens()">Enviar</button>

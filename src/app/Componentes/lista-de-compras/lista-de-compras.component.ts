@@ -10,27 +10,30 @@ import { HttpClient } from '@angular/common/http';
 export class ListaDeComprasComponent {
 
   isLoadingRequest: boolean = false;
-  itensAdicionais: string[][] = [['']];
+  itensAdicionais: string[] = [''];
   modalAberto: boolean = false;
   apiUrl = 'http://localhost:3000';
+  itensEstoque: any;
+  itensAEnviar: any;
 
   constructor(
     private router: Router, 
     private http: HttpClient,
   ) {}
 
+  ngOnInit(): void {
+    this.http.get<any>(`${this.apiUrl}/api/listaEstoque`).subscribe({
+      next: (response) => {
+        this.itensEstoque = response;
+      },
+      error: (error) => {
+        console.error('Erro ao buscar itens do estoque.', error);
+      }
+    });
+  }
+
   adicionarItem(event?: any): void {
-    if (event.target.value !== '' || event.target.innerHTML === 'Adicionar Item' && this.itensAdicionais[this.itensAdicionais.length-1][0] !== '') {
-      this.itensAdicionais.push(['']);
-      setTimeout(() => {
-        const lastIndex = this.itensAdicionais.length - 1;
-        const lastItemId = 'item-' + lastIndex;
-        const lastItem = document.getElementById(lastItemId);
-        if (lastItem) {
-          lastItem.focus();
-        }
-      });
-    }
+    this.itensAdicionais.push(event.target.value);
   }
 
   enviarItens(enviarLista?: boolean): void {
@@ -40,7 +43,13 @@ export class ListaDeComprasComponent {
     } 
     if (enviarLista) {
       this.modalAberto = false;
-      this.http.post<any>(`${this.apiUrl}/api/listaItens`, this.itensAdicionais).subscribe({
+      this.itensAdicionais.splice(0,1);
+
+      this.itensAEnviar = this.itensEstoque.filter((item: { nome: string; }) => {
+        return this.itensAdicionais.includes(item.nome);
+      });
+
+      this.http.post<any>(`${this.apiUrl}/api/listaCompras`, this.itensAEnviar).subscribe({
         next: (response) => {
           console.log('Lista enviada com sucesso para a API:', response);
         },
@@ -48,7 +57,7 @@ export class ListaDeComprasComponent {
           console.error('Erro ao enviar lista para a API:', error);
         }
       });
-      this.router.navigateByUrl('/recibo', { state: { itensAdicionais: this.itensAdicionais } });
+      this.router.navigateByUrl('/recibo', { state: { itensAEnviar: this.itensAEnviar } });
       return;
     } else {
       this.modalAberto = false;
