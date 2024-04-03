@@ -15,6 +15,16 @@
       </li>
     </ng-container>
   </ul>
+  <ul>
+    <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+      <li class="precos">
+        <h2>{{ grupo.corredor }}</h2>
+        <div *ngFor="let item of grupo.itens" class="precoItem">
+          - <i>R${{ item.preco }}</i>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
 </section>
 
 <mat-divider></mat-divider>
