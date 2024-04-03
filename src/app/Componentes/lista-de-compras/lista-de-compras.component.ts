@@ -15,6 +15,7 @@ export class ListaDeComprasComponent {
   apiUrl = 'http://localhost:3000';
   itensEstoque: any;
   itensAEnviar: any;
+  controleItens: string[] = [''];
 
   constructor(
     private router: Router, 
@@ -32,8 +33,11 @@ export class ListaDeComprasComponent {
     });
   }
 
-  adicionarItem(event?: any): void {
-    this.itensAdicionais.push(event.target.value);
+  adicionarItem(index: number, event?: any): void {
+    this.itensAdicionais[index] = event.target.value;
+    if (index === this.controleItens.length-1) {
+      this.controleItens.push('');
+    }
   }
 
   enviarItens(enviarLista?: boolean): void {
@@ -43,8 +47,6 @@ export class ListaDeComprasComponent {
     } 
     if (enviarLista) {
       this.modalAberto = false;
-      this.itensAdicionais.splice(0,1);
-
       this.itensAEnviar = this.itensEstoque.filter((item: { nome: string; }) => {
         return this.itensAdicionais.includes(item.nome);
       });
