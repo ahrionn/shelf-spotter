@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recibo.component.css']
 })
 export class ReciboComponent implements OnInit {
-  itensAEnviar: { nome: string, corredor: number }[] = [];
-  itensAgrupados: { corredor: number; itens: { nome: string; corredor: number; }[]; }[] = [];
+  itensAEnviar: any;
+  itensAgrupados: any = [];
+  precoTotalLista: number = 0;
 
   constructor() {}
 
@@ -16,14 +17,18 @@ export class ReciboComponent implements OnInit {
     if (navigation && navigation.itensAEnviar) {
       this.itensAEnviar = navigation.itensAEnviar;
       this.itensAgrupados = this.agruparItensPorCorredor();
+      for (let i = 0; i < this.itensAEnviar.length; i++) {
+        this.precoTotalLista += parseFloat(this.itensAEnviar[i].preco);
+      }
+      Math.round(this.precoTotalLista).toFixed(2);
     }
   }
 
-  agruparItensPorCorredor(): { corredor: number, itens: { nome: string, corredor: number }[] }[] {
-    const grupos: { corredor: number, itens: { nome: string, corredor: number }[] }[] = [];
+  agruparItensPorCorredor(): any {
+    const grupos: any = [];
 
-    this.itensAEnviar.forEach(item => {
-      const grupoExistente = grupos.find(grupo => grupo.corredor === item.corredor);
+    this.itensAEnviar.forEach((item: { corredor: any; }) => {
+      const grupoExistente = grupos.find((grupo: { corredor: any; }) => grupo.corredor === item.corredor);
       if (grupoExistente) {
         grupoExistente.itens.push(item);
       } else {
@@ -31,7 +36,7 @@ export class ReciboComponent implements OnInit {
       }
     });
 
-    grupos.sort((a, b) => a.corredor - b.corredor);
+    grupos.sort((a: any, b: any) => a.corredor - b.corredor);
 
     return grupos;
   }

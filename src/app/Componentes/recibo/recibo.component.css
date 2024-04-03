@@ -46,3 +46,10 @@
 .item:last-child {
     margin-bottom: 10px; /* Adicionar espaçamento na parte inferior do último item */
 }
+
+.total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
