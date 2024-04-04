@@ -3,25 +3,43 @@
 </div>
 
 <header class="header">
-  <div class="logo">
+  <div>
     <img src="/assets/img-project/logo_cliente.jpg" alt="logo">
   </div>
 </header>
 
+<section class="escolha">
+  
+  <mat-form-field>
+    <input type="text" placeholder="Nome do produto" matInput [formControl]="formControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>    
+
+  <button mat-icon-button class="add-button" (click)="adicionarItem()">
+    <mat-icon aria-label="Adicionar">add</mat-icon>
+  </button>
+
+</section>
+
 <section class="lista">
-  <form>
+  <ul>
+    <li *ngFor="let item of itensAdicionais"> 
+      {{ item }} 
+      <button mat-icon-button class="remover-button" (click)="removerItem(item)">
+        <mat-icon aria-label="Remover">remove</mat-icon>
+      </button>
+    </li>
+  </ul>
+</section>
 
-    <div *ngFor="let itemArray of controleItens; let i = index">
-      <label for="item{{ i }}" style="color: black;">Item {{ i+1 }}</label><br>
-      <select (change)="adicionarItem(i, $event)">
-        <option value=""></option>
-        <option *ngFor="let item of itensEstoque" [value]="item.nome">{{ item.nome }}</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary border-radius-buttons" style="margin-right: 12px; margin-top: 12px;" (click)="enviarItens()">Enviar</button>
-
-  </form>
+<section class="botao-enviar">
+  <button mat-icon-button class="enviar-button" style="margin-right: 12px; margin-top: 12px;" (click)="enviarItens()">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
 </section>
 
 <app-modal-confirmacao 

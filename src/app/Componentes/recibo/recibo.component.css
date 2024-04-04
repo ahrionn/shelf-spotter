@@ -82,3 +82,7 @@
     align-items: center;
     margin: 20px 0;
 }
+
+.total h2 {
+    margin-bottom: 50px;
+}
