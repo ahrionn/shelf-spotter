@@ -71,8 +71,8 @@
 }
 
 .mat-divider {
-    border-top: 1.5px solid white;
-    margin: 0.5% 35%;
+    border-top: 1px solid white;
+    margin: 0 30%;
 }
 
 .total {

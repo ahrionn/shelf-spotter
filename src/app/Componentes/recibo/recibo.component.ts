@@ -20,7 +20,7 @@ export class ReciboComponent implements OnInit {
       for (let i = 0; i < this.itensAEnviar.length; i++) {
         this.precoTotalLista += parseFloat(this.itensAEnviar[i].preco);
       }
-      Math.round(this.precoTotalLista).toFixed(2);
+      this.precoTotalLista = parseFloat(this.precoTotalLista.toFixed(2));
     }
   }
 
