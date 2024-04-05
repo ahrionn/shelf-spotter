@@ -4,10 +4,36 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: black;
     padding: 20px;
-    border: 1px solid black;
+    border: 1px solid white;
     z-index: 1000;
-    color: black;
+    color: white;
+    border-radius: 20px;
+}
+.modal h1 {
+    text-align: center;
+}
+.modal p {
+    text-align: center;
+}
+button {
+    background-color: transparent; 
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+    border: none;
+    padding: 12px 14px 12px 14px;
 }
   
+button:hover {
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+}
+.buttons {
+    text-align: center;
+}
+.botao-sim {
+    margin-right: 5%;
+}

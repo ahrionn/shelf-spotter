@@ -1,7 +1,13 @@
 <div class="modal">
     <h1>Confirmação</h1>
     <p>Tem certeza de que deseja enviar a lista?</p>
-    <button (click)="fecharModal(true)">Sim</button>
-    <button (click)="fecharModal(false)">Não</button>
+    <div class="buttons">
+        <button type="button" class="botao-sim" (click)="fecharModal(true)">
+            <mat-icon>check</mat-icon>
+        </button>
+        <button type="button" (click)="fecharModal(false)">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
 </div>
   
