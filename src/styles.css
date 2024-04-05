@@ -7,6 +7,22 @@ body {
     margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 /*==================
+ HEADER
+==================*/
+.header {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0;
+}
+.logo {
+    margin: 0 5% 0 5%;
+}
+.logo img {
+    width: 100%;
+}
+/*==================
  LOADING
 ==================*/
 .loading,

@@ -1,34 +1,10 @@
-.header {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
-
 .escolha {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  margin-top: 10%;
 }
 
-form {
-  width: 270px;
-  padding: 20px 0 0 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  box-sizing: border-box;
-}
 /*==================
  MODAL
 ==================*/
@@ -90,7 +66,7 @@ select {
 ul {
   list-style-type: none;
   padding: 0;
-  width: 13%;
+  width: 30%;
 }
 li {
   margin-bottom: 15px;
