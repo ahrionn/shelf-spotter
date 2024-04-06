@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-lista-de-compras',
@@ -24,6 +25,7 @@ export class ListaDeComprasComponent {
   constructor(
     private router: Router, 
     private http: HttpClient,
+    private toastr: ToastrService
   ) {
     this.itensFiltrados = this.formControl.valueChanges.pipe(
       startWith(''),
@@ -76,6 +78,10 @@ export class ListaDeComprasComponent {
   }
 
   enviarItens(enviarLista?: boolean): void {
+    if (this.itensAdicionais.length === 0) {
+      this.toastr.show('Seu carrinho está vazio!');
+      return;
+    }
     if (!this.modalAberto) {
       this.abrirModal();
       return;

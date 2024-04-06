@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { ListaDeComprasComponent } from './Componentes/lista-de-compras/lista-de-compras.component';
@@ -35,7 +36,17 @@ import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
     MatProgressSpinnerModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      toastClass: 'toast-message',
+      timeOut: 3000,
+      positionClass: 'toast-center',
+      preventDuplicates: true,
+      closeButton: false,
+      progressBar: false,
+      enableHtml: false,
+      newestOnTop: true,
+    })
   ],
   providers: [
     provideAnimationsAsync()

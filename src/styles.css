@@ -53,3 +53,35 @@ body {
 .mat-progress-spinner.mat-blue circle, .mat-spinner.mat-blue circle {
     stroke: #3f51b5 !important;
 }
+/*==================
+ TOASTR
+==================*/
+.toast-container {
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+  
+.toast-message {
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.toast-success {
+    background-color: #28a745; 
+}
+
+.toast-error {
+    background-color: #dc3545;
+}
+
+.toast-warning {
+    background-color: #ffc107;
+}
+
+.toast-info {
+    background-color: #17a2b8;
+}
