@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recibo',
@@ -10,7 +11,9 @@ export class ReciboComponent implements OnInit {
   itensAgrupados: any = [];
   precoTotalLista: number = 0;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     const navigation = window.history.state;
@@ -39,5 +42,9 @@ export class ReciboComponent implements OnInit {
     grupos.sort((a: any, b: any) => a.corredor - b.corredor);
 
     return grupos;
+  }
+
+  voltarParaLista() {
+    this.router.navigateByUrl('/lista-de-compras');
   }
 }
