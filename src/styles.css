@@ -1,26 +1,67 @@
-body, html {
+html {
     background-color: black;
     color: white;
     height: 100%;
+    width: 100%;
 }
 body { 
-    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+app-root {
+    height: 100%;
+    width: 100%;
+}
+.content {
+    display: flex;
+    height: 80%;
+    width: 100%;
+    justify-content: center;
+    position: fixed;
+    top: 11%;
+    overflow: auto;
 }
 /*==================
- HEADER
+ HEADER & FOOTER
 ==================*/
-.header {
-    height: 15%;
+app-header {
+    background-color: #333;
+    color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    margin: 0;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
 }
 .logo {
-    margin: 0 5% 0 5%;
+    padding: 0px 7% 0 7%;
 }
 .logo img {
     width: 100%;
+    margin: 5% 0 5% 0;
+}
+app-footer {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+}
+.copyright {
+    margin: 10px 0 10px 0 !important;
 }
 /*==================
  LOADING

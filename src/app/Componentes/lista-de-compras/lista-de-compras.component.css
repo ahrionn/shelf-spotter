@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 20%;
 }
 
 /*==================
@@ -66,21 +66,20 @@
 ul {
   list-style-type: none;
   padding: 0;
-  width: 65%;
+  width: 100%;
 }
 li {
-  margin-bottom: 35px;
+  margin-bottom: 20%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: large;
+  font-size: x-large;
   border-bottom: 1px solid white;
 }
 .lista {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
 }
 /*==================
  REMOVE
@@ -111,7 +110,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  padding-bottom: 15%;
 }
 .enviar-button {
   background-color: transparent; 

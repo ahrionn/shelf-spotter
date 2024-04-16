@@ -17,6 +17,8 @@ import { ListaDeComprasComponent } from './Componentes/lista-de-compras/lista-de
 import { ReciboComponent } from './Componentes/recibo/recibo.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
+import { HeaderComponent } from './Componentes/header/header.component';
+import { FooterComponent } from './Componentes/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
     ListaDeComprasComponent,
     ReciboComponent,
     ModalConfirmacaoComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
