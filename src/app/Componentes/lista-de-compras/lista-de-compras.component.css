@@ -69,11 +69,11 @@ ul {
   width: 100%;
 }
 li {
-  margin-bottom: 20%;
+  margin-bottom: 18%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: x-large;
+  font-size: large;
   border-bottom: 1px solid white;
 }
 .lista {
