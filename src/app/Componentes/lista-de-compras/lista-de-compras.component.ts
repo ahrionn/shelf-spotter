@@ -21,7 +21,8 @@ export class ListaDeComprasComponent {
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
   formControl = new FormControl();
-  urlAmbiente = environment.urlAmbiente;
+  apiUrl = 'https://long-tan-anemone-kit.cyclic.app/';
+  // apiUrl = 'https://localhost:3000/';
 
   constructor(
     private router: Router, 
