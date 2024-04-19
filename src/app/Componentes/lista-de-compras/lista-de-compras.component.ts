@@ -21,6 +21,7 @@ export class ListaDeComprasComponent {
   isLoadingRequest: boolean = false;
   formControl = new FormControl();
   apiUrl = 'https://long-tan-anemone-kit.cyclic.app/';
+  // apiUrl = 'https://localhost:3000/';
 
   constructor(
     private router: Router, 
