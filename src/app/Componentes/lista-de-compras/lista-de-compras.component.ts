@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../Environments/environment';
 
 @Component({
   selector: 'app-lista-de-compras',
@@ -20,7 +21,7 @@ export class ListaDeComprasComponent {
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
   formControl = new FormControl();
-  apiUrl = 'https://long-tan-anemone-kit.cyclic.app/';
+  urlAmbiente = environment.urlAmbiente;
 
   constructor(
     private router: Router, 
@@ -35,7 +36,7 @@ export class ListaDeComprasComponent {
 
   ngOnInit(): void {
     this.isLoadingRequest = true;
-    this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
+    this.http.get<any[]>(`${this.urlAmbiente}/api/listaEstoque`).subscribe({
       next: (response) => {
         this.isLoadingRequest = false;
         this.itensEstoque = response.sort((a, b) => a.nome.localeCompare(b.nome));
@@ -92,7 +93,7 @@ export class ListaDeComprasComponent {
         return this.itensAdicionais.includes(item.nome);
       });
       this.isLoadingRequest = true;
-      this.http.post<any>(`${this.apiUrl}/api/listaCompras`, this.itensAEnviar).subscribe({
+      this.http.post<any>(`${this.urlAmbiente}/api/listaCompras`, this.itensAEnviar).subscribe({
         next: (response) => {
           this.isLoadingRequest = false;
           console.log('Lista enviada com sucesso para a API:', response);
