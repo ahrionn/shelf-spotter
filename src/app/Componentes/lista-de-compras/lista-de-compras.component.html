@@ -2,52 +2,60 @@
   <mat-spinner [diameter]="70"></mat-spinner>
 </div>
 
-<section class="escolha">
+<div class="container">
+  <section class="escolha">
   
-  <mat-form-field>
-    <input type="text" placeholder="Nome do produto" matInput [formControl]="formControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
-        {{ option }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>    
-
-  <button mat-icon-button class="add-button" (click)="adicionarItem()">
-    <mat-icon aria-label="Adicionar">add</mat-icon>
-  </button>
-
-</section>
-
-<section class="lista">
-  <ul>
-    <li *ngFor="let item of itensAdicionais"> 
-      {{ item }} 
-      <button mat-icon-button class="remover-button" (click)="removerItem(item)">
-        <mat-icon aria-label="Remover">delete</mat-icon>
-      </button>
-    </li>
-  </ul>
-</section>
-
-<section class="botao-enviar">
-  <button mat-icon-button class="enviar-button" style="margin-right: 12px; margin-top: 12px;" (click)="enviarItens()">
-    <mat-icon>keyboard_arrow_right</mat-icon>
-  </button>
-</section>
-
-<app-modal-confirmacao 
-  *ngIf="modalAberto" 
-  (fechar)="fecharModal($event)"
-  style="
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-  ">
-</app-modal-confirmacao>
-
-<div id="overlay"></div>
+    <mat-form-field>
+      <input type="text" placeholder="Faça sua lista aqui!" matInput [formControl]="formControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>    
+  
+    <button mat-icon-button class="add-button" (click)="adicionarItem()">
+      <mat-icon aria-label="Adicionar">add</mat-icon>
+    </button>
+  
+  </section>
+  
+  <section class="lista">
+    <ul>
+      <li *ngFor="let item of itensAdicionais"> 
+        {{ item }} 
+        <button mat-icon-button class="remover-button" (click)="removerItem(item)">
+          <mat-icon aria-label="Remover">delete</mat-icon>
+        </button>
+      </li>
+    </ul>
+  </section>
+  
+  <section class="botao-enviar">
+    <button mat-icon-button class="enviar-button" (click)="enviarItens()">
+      <p style="
+      margin-bottom: 0;
+      width: 65%;
+      font-variant-caps: small-caps;
+      font-size: large;">organizar</p>
+      <mat-icon
+      style="padding-left: 7px;">keyboard_arrow_right</mat-icon>
+    </button>
+  </section>
+  
+  <app-modal-confirmacao 
+    *ngIf="modalAberto" 
+    (fechar)="fecharModal($event)"
+    style="
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    ">
+  </app-modal-confirmacao>
+  
+  <div id="overlay"></div>
+</div>

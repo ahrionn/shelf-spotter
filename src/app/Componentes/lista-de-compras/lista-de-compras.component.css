@@ -1,8 +1,20 @@
+.container {
+  display: flex;
+  height: 85%;
+  width: 100%;
+  justify-content: center;
+  position: fixed;
+  top: 11%;
+  overflow: auto;
+}
+
 .escolha {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20%;
+  margin-top: 15%;
+  position: fixed;
+  z-index: 1000;
 }
 
 /*==================
@@ -40,25 +52,16 @@
  BOTÃO ADD
 ==================*/
 .add-button {
-  background-color: transparent; 
-  color: white; 
+  background-color: #ffffff;
+  color: black;
   width: 40px; 
   height: 40px;
-  transition: background-color 0.3s ease;
   border-radius: 50%;
-  border: none;
+  border: 2px solid #58017a;
   margin: 0 0 23px 12px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.add-button:hover {
-  background-color: #ffffff;
-  color: black;
-  border-radius: 50%;
-  cursor: pointer;
 }
 /*==================
  LISTA ITENS
@@ -80,6 +83,10 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 35%;
+  width: 70%;
+  position: absolute;
+  right: 15%;
 }
 /*==================
  REMOVE
@@ -110,23 +117,29 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 15%;
+  position: fixed;
+  top: 82%;
 }
 .enviar-button {
-  background-color: transparent; 
-  color: white; 
-  width: 40px; 
-  height: 40px;
-  transition: background-color 0.3s ease;
-  border-radius: 50%;
-  border: none;
-
+  background-color: #ffffff;
+  color: black;
+  border: 2px solid #58017a;
+  border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s ease;
+  width: 150px;
+  height: 50px;
 }
-.enviar-button:hover {
-  background-color: #ffffff;
-  color: black;
-  cursor: pointer;
+.enviar-button:active {
+  background-color: #535353;
+}
+
+/*-- Sublinhado da caixa de pesquisa --*/
+.mat-form-field-underline {
+  display: none !important; /* Remove o sublinhado */
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: transparent; /* Remove a animação de sublinhado no foco */
 }

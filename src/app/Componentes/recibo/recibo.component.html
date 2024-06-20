@@ -1,34 +1,41 @@
-<section class="lista">
-  <ul>
-    <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
-      <li class="grupo">
-        <h2>Corredor {{ grupo.corredor }}</h2>
-        <div *ngFor="let item of grupo.itens" class="item">
-          {{ item.nome }}
-        </div>
-      </li>
-    </ng-container>
-  </ul>
-  <ul>
-    <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
-      <li class="precos">
-        <h2>{{ grupo.corredor }}</h2>
-        <div *ngFor="let item of grupo.itens" class="precoItem">
-          - <i>R${{ item.preco }}</i>
-        </div>
-      </li>
-    </ng-container>
-  </ul>
-</section>
+<div class="container">
+  <section class="lista">
+    <div class="lista-wrapper">
+      <ul>
+        <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+          <li class="grupo">
+            <h2>Corredor {{ grupo.corredor }}</h2>
+            <div *ngFor="let item of grupo.itens" class="item">
+              {{ item.nome }}
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+      <ul>
+        <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+          <li class="precos">
+            <h2 style="color: black;">.</h2>
+            <div *ngFor="let item of grupo.itens" class="precoItem">
+              - <i>R${{ item.preco }}</i>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </section>
 
-<mat-divider></mat-divider>
+  <h2 class="total-preco">R${{ this.precoTotalLista }}</h2>
 
-<section class="total">
-  <h2>R${{ this.precoTotalLista }}</h2>
-</section>
+  <section class="botao-voltar">
+    <button mat-icon-button class="voltar-button" (click)="voltarParaLista()">
+      <p style="
+      margin-bottom: 0;
+      width: 65%;
+      font-variant-caps: small-caps;
+      font-size: large;">voltar</p>
+      <mat-icon
+      style="padding-left: 7px;">keyboard_arrow_left</mat-icon>
+    </button>
+  </section>
 
-<section class="botao-voltar">
-  <button mat-icon-button class="voltar-button" style="margin-right: 12px; margin-top: 12px;" (click)="voltarParaLista()">
-    <mat-icon>keyboard_arrow_left</mat-icon>
-  </button>
-</section>
+</div>

@@ -1,22 +1,41 @@
-.lista {
+.container {
     display: flex;
+    flex-direction: column;
+    height: 85%;
+    width: 100%;
     justify-content: center;
+    position: fixed;
+    top: 11%;
+    overflow: auto;
+}
+
+.lista {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin: 20% 0;
+    border-bottom: 2px solid #58017a;
+    padding-top: 50px;
+}
+
+.lista-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
 .lista ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .precos {
     margin-bottom: 20px;
     padding: 13px 5px;
-}
-
-.precos h2 {
-    color: black;
 }
 
 .precoItem {
@@ -63,20 +82,10 @@
     margin-bottom: 10px;
 }
 
-.mat-divider {
-    border-top: 1px solid white;
-    margin: 0 -25%;
-}
-
-.total {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.total h2 {
-    margin-bottom: 0;
+.total-preco {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
 }
 
 .botao-voltar {
@@ -87,21 +96,13 @@
 }
 
 .voltar-button {
-    background-color: transparent; 
-    color: white; 
-    width: 40px; 
-    height: 40px;
-    transition: background-color 0.3s ease;
-    border-radius: 50%;
-    border: none;
-  
+    background-color: #ffffff;
+    color: black;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    border: 2px solid #58017a;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.voltar-button:hover {
-    background-color: #ffffff;
-    color: black;
-    cursor: pointer;
 }
