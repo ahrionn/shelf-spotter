@@ -20,8 +20,9 @@ export class ListaDeComprasComponent {
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
   formControl = new FormControl();
+  cacheItensEstoque: string | undefined;
   apiUrl = 'https://api-spotter.onrender.com';
-  // apiUrl = 'https://localhost:3000/';
+  // apiUrl = 'http://localhost:3000';
 
   constructor(
     private router: Router, 
@@ -35,11 +36,22 @@ export class ListaDeComprasComponent {
   }
 
   ngOnInit(): void {
+
+    if (localStorage.getItem('itensEstoque')) {
+      this.itensEstoque = JSON.parse(localStorage.getItem('itensEstoque') || '[]');
+      return;
+    }
+
     this.isLoadingRequest = true;
     this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
       next: (response) => {
         this.isLoadingRequest = false;
         this.itensEstoque = response.sort((a, b) => a.nome.localeCompare(b.nome));
+
+        // Guarda lista de estoque no cache
+        this.cacheItensEstoque = JSON.stringify(this.itensEstoque);
+        localStorage.setItem('itensEstoque', this.cacheItensEstoque);
+
         this.inicializaItensFiltrados();
       },
       error: (error) => {

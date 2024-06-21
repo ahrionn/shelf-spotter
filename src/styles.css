@@ -61,11 +61,10 @@ app-footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    left: 0;
 }
-
-mat-spinner {
-    bottom: 10%;
+.custom-spinner .mdc-circular-progress__indeterminate-circle-graphic circle,
+.custom-spinner .mdc-circular-progress__determinate-circle {
+    stroke: white;
 }
 /*==================
  TOASTR
@@ -107,9 +106,4 @@ mat-spinner {
 .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled.mdc-text-field--no-label {
     border-radius: 50px;
     border: 2px solid #58017a;
-}
-
-/*-- Caixa de sugestões --*/
-.mat-mdc-autocomplete-panel.mdc-menu-surface.mdc-menu-surface--open.ng-trigger.ng-trigger-panelAnimation.ng-tns-c701038127-1.ng-star-inserted.mat-mdc-autocomplete-visible.mat-primary {
-    border-radius: 30px;
 }
