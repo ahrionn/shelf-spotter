@@ -118,7 +118,7 @@ li {
 
 .handle {
   position: fixed;
-  bottom: 6%; /* Distância do fundo da tela */
+  bottom: 7%; /* Distância do fundo da tela */
   left: 50%;
   transform: translateX(-50%);
   width: 12%;
@@ -171,7 +171,7 @@ li {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 82%;
+  top: 78%;
 }
 .enviar-button {
   background-color: #ffffff;
