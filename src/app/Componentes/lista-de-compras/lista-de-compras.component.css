@@ -118,16 +118,16 @@ li {
 
 .handle {
   position: fixed;
-  bottom: 7%; /* Distância do fundo da tela */
+  bottom: 6.5%; /* Distância do fundo da tela */
   left: 50%;
   transform: translateX(-50%);
-  width: 12%;
+  width: 50px;
   border-radius: 50%;
-  height: 3%;
+  height: 27px;
   text-align: center;
   cursor: pointer;
   padding: 10px 0;
-  background: #ccc; /* Cor da etiqueta */
+  background: white;
   z-index: 1000;
   border: 2px solid #58017a;
 }
