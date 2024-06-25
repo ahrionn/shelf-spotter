@@ -15,7 +15,7 @@ body {
  HEADER & FOOTER
 ==================*/
 app-header {
-    background-color: #333;
+    background-color: #3a2b41;
     color: white;
     display: flex;
     justify-content: center;
@@ -34,7 +34,7 @@ app-header {
     margin: 5% 0 5% 0;
 }
 app-footer {
-    background-color: #333;
+    background-color: #3a2b41;
     color: white;
     display: flex;
     justify-content: center;
@@ -69,37 +69,34 @@ app-footer {
 /*==================
  TOASTR
 ==================*/
-.toast-container {
+.toast-container.toast-center {
     position: fixed;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    margin: 0 !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background-color: #333 !important;
+    border-radius: 8px;
 }
   
 .toast-message {
-    background-color: #333;
     color: #fff;
-    border-radius: 8px;
     padding: 12px;
     font-size: 14px;
     text-align: center;
+    background: none;
 }
 
-.toast-success {
-    background-color: #28a745; 
-}
-
-.toast-error {
-    background-color: #dc3545;
-}
-
-.toast-warning {
-    background-color: #ffc107;
-}
-
-.toast-info {
-    background-color: #17a2b8;
+.toast-success-custom {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border-radius: 8px;
+    background: #58017a !important;
+    color: #fff !important;
+    border-radius: 8px;
 }
 
 /*-- Caixa de pesquisa --*/

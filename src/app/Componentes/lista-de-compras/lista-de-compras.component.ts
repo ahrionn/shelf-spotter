@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListaDeComprasComponent {
 
+  isOpen = false;
   itensAEnviar: any;
   itensEstoque: any[] = [];
   itensAdicionais: string[] = [];
@@ -75,10 +76,29 @@ export class ListaDeComprasComponent {
       .filter(option => option.toLowerCase().includes(filterValue));
   }
 
+  toggleList() {
+    this.isOpen = !this.isOpen;
+  }
+
   adicionarItem(): void {
+    if (this.formControl.value === null || this.formControl.value === '') {
+      this.toastr.show('Selecione um item');
+      return;
+    }
     const itemSelecionado = this.formControl.value.trim();
     if (itemSelecionado && !this.itensAdicionais.includes(itemSelecionado)) {
       this.itensAdicionais.push(itemSelecionado);
+      this.toastr.success(`${itemSelecionado} adicionado(a)!`, '', {
+        toastClass: 'ngx-toastr toast-success-custom',
+        timeOut: 2000,
+      });
+      const element = document.getElementById('blinkingElement');
+      if (element) {
+        element.classList.add('blink');
+        setTimeout(() => {
+          element?.classList.remove('blink');
+        }, 3000); 
+      }
     }
     this.formControl.setValue('');
   }
@@ -92,7 +112,7 @@ export class ListaDeComprasComponent {
 
   enviarItens(enviarLista?: boolean): void {
     if (this.itensAdicionais.length === 0) {
-      this.toastr.show('Seu carrinho está vazio!');
+      this.toastr.show('Sua lista está vazia!');
       return;
     }
     if (!this.modalAberto) {

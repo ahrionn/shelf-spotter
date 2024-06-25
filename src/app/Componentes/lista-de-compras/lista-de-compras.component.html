@@ -6,7 +6,7 @@
   <section class="escolha">
   
     <mat-form-field>
-      <input type="text" placeholder="Faça sua lista aqui!" matInput [formControl]="formControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Adicione um item aqui" matInput [formControl]="formControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
           {{ option }}
@@ -20,7 +20,13 @@
   
   </section>
   
-  <section class="lista">
+  <section class="lista" [class.open]="isOpen">
+
+    <h2 style="text-align: center;
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-family: system-ui;"><i>Minha lista até agora</i></h2>
+
     <ul>
       <li *ngFor="let item of itensAdicionais"> 
         {{ item }} 
@@ -30,6 +36,10 @@
       </li>
     </ul>
   </section>
+  <div id="blinkingElement" class="handle" (click)="toggleList()">
+    <mat-icon style="color: black;">{{ isOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</mat-icon>
+  </div>
+  
   
   <section class="botao-enviar">
     <button mat-icon-button class="enviar-button" (click)="enviarItens()">

@@ -68,11 +68,11 @@
 ==================*/
 ul {
   list-style-type: none;
-  padding: 0;
-  width: 100%;
+  padding: 12%;
+  overflow: auto;
 }
 li {
-  margin-bottom: 18%;
+  margin-bottom: 15%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,14 +80,67 @@ li {
   border-bottom: 1px solid white;
 }
 .lista {
+  position: fixed;
+  bottom: 0; /* Posiciona a lista no fundo da tela */
+  left: 0;
+  right: 0;
+  height: 0; /* Esconde a lista inicialmente */
+  background: #302b33;
+  transition: height 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transições suaves */
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35%;
-  width: 70%;
-  position: absolute;
-  right: 15%;
+  flex-direction: column;
+  overflow: hidden; /* Para ocultar o conteúdo quando fechado */
+  transform: translateY(100%); /* Esconde a lista abaixo da tela */
 }
+
+.lista.open {
+  height: 83%; /* Altura quando aberta */
+  transform: translateY(0); /* Move a lista para a tela */
+  z-index: 1000;
+}
+
+@keyframes blink {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #ff78ff;
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.handle {
+  position: fixed;
+  bottom: 6%; /* Distância do fundo da tela */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12%;
+  border-radius: 50%;
+  height: 3%;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 0;
+  background: #ccc; /* Cor da etiqueta */
+  z-index: 1000;
+  border: 2px solid #58017a;
+}
+
+.handle mat-icon {
+  font-size: 24px; /* Tamanho do ícone */
+  transition: transform 0.3s;
+}
+
+.lista.open + .handle mat-icon {
+  transform: rotate(360deg); /* Rotaciona a seta quando a lista está aberta */
+}
+
 /*==================
  REMOVE
 ==================*/
