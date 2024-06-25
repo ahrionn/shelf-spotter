@@ -17,6 +17,70 @@
   z-index: 1000;
 }
 
+.grupos {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lista-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 60%;
+}
+
+.ulGrupos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4%; 
+  padding: 0 5%;
+}
+
+.grupo {
+  background-color: #f9f9f9;
+  border-radius: 20%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 6%;
+  width: 35%;
+  height: 20%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  border-bottom: 1px solid white;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.grupo h2 {
+  margin: 0;
+  color: #333;
+  font-size: 85%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.item {
+  color: #666;
+  font-size: 16px;
+  text-align: center;
+}
+
+.item:first-child {
+  margin-top: 10px;
+}
+
+.item:last-child {
+  margin-bottom: 10px;
+}
+
 /*==================
  MODAL
 ==================*/

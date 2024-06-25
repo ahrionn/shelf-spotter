@@ -6,7 +6,7 @@
   <section class="escolha">
   
     <mat-form-field>
-      <input type="text" placeholder="Adicione um item aqui" matInput [formControl]="formControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Procure um item aqui..." matInput [formControl]="formControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
           {{ option }}
@@ -18,6 +18,27 @@
       <mat-icon aria-label="Adicionar">add</mat-icon>
     </button>
   
+  </section>
+
+  <section class="grupos">
+
+    <h2 style="text-align: center;
+    margin-top: 5%;
+    margin-bottom: 0;
+    font-family: system-ui;"><i>Ou procure por corredor!</i></h2>
+
+    <div class="lista-wrapper">
+      <ul class="ulGrupos">
+        <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+          <li class="grupo">
+            <h2>Corredor {{ grupo.corredor }}</h2>
+            <!-- <div *ngFor="let item of grupo.itens" class="item">
+              {{ item.nome }}
+            </div> -->
+          </li>
+        </ng-container>
+      </ul>
+    </div>
   </section>
   
   <section class="lista" [class.open]="isOpen">

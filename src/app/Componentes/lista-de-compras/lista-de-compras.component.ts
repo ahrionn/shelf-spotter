@@ -80,6 +80,25 @@ export class ListaDeComprasComponent {
     this.isOpen = !this.isOpen;
   }
 
+  agruparItensPorCorredor(): any {
+    const grupos: any = [];
+
+    if (this.itensEstoque) {
+      this.itensEstoque.forEach((item: any) => {
+        const grupoExistente = grupos.find((grupo: any) => grupo.corredor === item.corredor);
+        if (grupoExistente) {
+          grupoExistente.itens.push(item);
+        } else {
+          grupos.push({ corredor: item.corredor, itens: [item] });
+        }
+      });
+    }
+
+    grupos.sort((a: any, b: any) => a.corredor - b.corredor);
+
+    return grupos;
+  }
+
   adicionarItem(): void {
     if (this.formControl.value === null || this.formControl.value === '') {
       this.toastr.show('Selecione um item');
