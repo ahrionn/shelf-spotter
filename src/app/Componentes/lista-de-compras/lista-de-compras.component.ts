@@ -22,7 +22,7 @@ export class ListaDeComprasComponent {
   formControl = new FormControl();
   cacheItensEstoque: string | undefined;
   apiUrl = 'https://api-spotter.onrender.com';
-  // apiUrl = 'http://localhost:3000';
+  // apiUrl = 'http://localhost:3000'; teste
 
   constructor(
     private router: Router, 
