@@ -19,6 +19,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
 import { HeaderComponent } from './Componentes/header/header.component';
 import { FooterComponent } from './Componentes/footer/footer.component';
+import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FooterComponent } from './Componentes/footer/footer.component';
     ModalConfirmacaoComponent,
     HeaderComponent,
     FooterComponent,
+    PaginaInicialComponent,
   ],
   imports: [
     BrowserModule,

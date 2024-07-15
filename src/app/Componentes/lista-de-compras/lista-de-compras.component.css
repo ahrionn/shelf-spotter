@@ -70,6 +70,7 @@ ul {
   list-style-type: none;
   padding: 0;
   width: 100%;
+  margin-bottom: 40%;
 }
 li {
   margin-bottom: 18%;
@@ -142,4 +143,15 @@ li {
 }
 .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: transparent; /* Remove a animação de sublinhado no foco */
+}
+
+.voltar {
+  position: absolute;
+  top: 88%;
+  right: 82%;
+  border: none;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  font-size: large;
 }

@@ -22,7 +22,7 @@ export class ListaDeComprasComponent {
   formControl = new FormControl();
   cacheItensEstoque: string | undefined;
   apiUrl = 'https://api-spotter.onrender.com';
-  // apiUrl = 'http://localhost:3000'; teste
+  // apiUrl = 'http://localhost:3000';
 
   constructor(
     private router: Router, 
@@ -130,4 +130,9 @@ export class ListaDeComprasComponent {
   fecharModal(enviarLista: boolean) {
     this.enviarItens(enviarLista);
   }
+
+  redirectToMain() {
+    this.router.navigateByUrl('/pagina-inicial');
+  }
+
 }
