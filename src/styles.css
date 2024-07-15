@@ -1,5 +1,5 @@
 html {
-    background-color: black;
+    background-color: #298AB4;
     color: white;
     height: 100%;
     width: 100%;
@@ -15,7 +15,8 @@ body {
  HEADER & FOOTER
 ==================*/
 app-header {
-    background-color: #333;
+    background-color: #002B48
+;
     color: white;
     display: flex;
     justify-content: center;
@@ -34,7 +35,8 @@ app-header {
     margin: 5% 0 5% 0;
 }
 app-footer {
-    background-color: #333;
+    background-color: #002B48
+;
     color: white;
     display: flex;
     justify-content: center;
@@ -105,5 +107,5 @@ app-footer {
 /*-- Caixa de pesquisa --*/
 .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled.mdc-text-field--no-label {
     border-radius: 50px;
-    border: 2px solid #58017a;
+    border: 2px solid #002B48;
 }
