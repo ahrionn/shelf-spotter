@@ -5,7 +5,7 @@
     <section class="lista">
         <ul>
             <li *ngFor="let item of minhasListas; let i = index"> 
-                <button (click)="redirectToShopping(i)"> {{ item }} </button>
+                <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
             </li>
         </ul>
     </section>
