@@ -38,3 +38,9 @@ button:hover {
     display: flex;
     justify-content: space-evenly;
 }
+.lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}

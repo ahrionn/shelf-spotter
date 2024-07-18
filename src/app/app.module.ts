@@ -20,6 +20,7 @@ import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
 import { HeaderComponent } from './Componentes/header/header.component';
 import { FooterComponent } from './Componentes/footer/footer.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
+import { MinhasListasComponent } from './Componentes/minhas-listas/minhas-listas.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
     HeaderComponent,
     FooterComponent,
     PaginaInicialComponent,
+    MinhasListasComponent,
   ],
   imports: [
     BrowserModule,

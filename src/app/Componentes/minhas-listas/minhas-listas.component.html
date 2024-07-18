@@ -1,0 +1,34 @@
+<div class="container">
+
+    <h1 style="margin-bottom: 15%;
+    font-size: xx-large;"> Minhas Listas </h1>
+    <section class="lista">
+        <ul>
+            <li *ngFor="let item of minhasListas; let i = index"> 
+                <button (click)="redirectToShopping(i)"> {{ item }} </button>
+            </li>
+        </ul>
+    </section>
+
+    <app-modal-confirmacao 
+    [modalMinhasListas]="modalMinhasListas"
+    [listaSelecionada]="listaSelecionada"
+    *ngIf="modalAberto" 
+    (fechar)="fecharModal($event)"
+    style="
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    ">
+    </app-modal-confirmacao>
+
+</div>
+
+<button class="voltar" (click)="redirectToMain()">
+    <i class="fas fa-home"></i>
+</button>

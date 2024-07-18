@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-confirmacao',
@@ -7,6 +7,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ModalConfirmacaoComponent {
   @Output() fechar: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() modalMinhasListas!: boolean;
+  @Input() modalListaDeCompras!: boolean;
+  @Input() listaSelecionada: any;
 
   fecharModal(enviarLista: boolean) {
     this.fechar.emit(enviarLista);

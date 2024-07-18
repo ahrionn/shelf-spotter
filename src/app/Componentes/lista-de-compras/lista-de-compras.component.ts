@@ -17,7 +17,9 @@ export class ListaDeComprasComponent {
   itensEstoque: any[] = [];
   itensAdicionais: string[] = [];
   itensFiltrados: Observable<string[]> | undefined;
+  minhasListas: any[] = [];
   modalAberto: boolean = false;
+  modalListaDeCompras!: boolean;
   isLoadingRequest: boolean = false;
   formControl = new FormControl();
   cacheItensEstoque: string | undefined;
@@ -105,6 +107,24 @@ export class ListaDeComprasComponent {
         return this.itensAdicionais.includes(item.nome);
       });
       this.isLoadingRequest = true;
+
+      // Salva lista no cache do navegador
+      let storedListas = localStorage['minhasListas'];
+      if (storedListas !== null && storedListas !== 'undefined' && storedListas !== undefined && storedListas !== '') {
+        this.minhasListas = storedListas ? JSON.parse(storedListas) : [];
+        this.itensAEnviar.push(this.timeStamp());
+        this.minhasListas.push(this.itensAEnviar);
+        if (this.minhasListas !== undefined && this.minhasListas !== null && this.minhasListas.length > 5) {
+          this.minhasListas.splice(0, 1);
+        }
+        localStorage.setItem('minhasListas', JSON.stringify(this.minhasListas));
+      } else {
+        this.itensAEnviar.push(this.timeStamp());
+        this.minhasListas.push(this.itensAEnviar);
+        localStorage.setItem('minhasListas', JSON.stringify(this.minhasListas));
+      }
+      this.itensAEnviar.pop();
+
       this.http.post<any>(`${this.apiUrl}/api/listaCompras`, this.itensAEnviar).subscribe({
         next: (response) => {
           this.isLoadingRequest = false;
@@ -124,15 +144,35 @@ export class ListaDeComprasComponent {
   }
 
   abrirModal() {
+    this.modalListaDeCompras = true;
     this.modalAberto = true;
   }
 
   fecharModal(enviarLista: boolean) {
+    this.modalListaDeCompras = false;
     this.enviarItens(enviarLista);
   }
 
   redirectToMain() {
     this.router.navigateByUrl('/pagina-inicial');
+  }
+
+  timeStamp() {
+    const hoje = new Date();
+
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const ano = hoje.getFullYear();
+
+    const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    const diaDaSemana = diasDaSemana[hoje.getDay()];
+
+    const horas = String(hoje.getHours()).padStart(2, '0');
+    const minutos = String(hoje.getMinutes()).padStart(2, '0');
+
+    const dataCompleta = `${dia}/${mes}/${ano} (${diaDaSemana}) ${horas}:${minutos}`;
+
+    return dataCompleta;
   }
 
 }
