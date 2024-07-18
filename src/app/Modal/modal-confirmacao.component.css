@@ -10,6 +10,7 @@
     z-index: 1000;
     color: white;
     border-radius: 20px;
+    width: 100%
 }
 .modal h1 {
     text-align: center;
@@ -24,6 +25,7 @@ button {
     border-radius: 50%;
     border: none;
     padding: 12px 14px 12px 14px;
+    width: 25%;
 }
   
 button:hover {
@@ -33,7 +35,6 @@ button:hover {
 }
 .buttons {
     text-align: center;
-}
-.botao-sim {
-    margin-right: 5%;
+    display: flex;
+    justify-content: space-evenly;
 }

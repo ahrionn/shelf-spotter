@@ -1,12 +1,18 @@
 <div class="modal">
     <h1>Confirmação</h1>
-    <p>Sua lista será organizada de acordo com a disposição de itens nos corredores. Deseja continuar?</p>
+    <p>Tudo certo?</p>
     <div class="buttons">
-        <button type="button" class="botao-sim" (click)="fecharModal(true)">
-            <mat-icon>check</mat-icon>
-        </button>
         <button type="button" (click)="fecharModal(false)">
-            <mat-icon>close</mat-icon>
+            <div>
+                <mat-icon>arrow_left</mat-icon>
+                <p>Esqueci de um item!</p> 
+            </div>
+        </button>
+        <button type="button" class="botao-sim" (click)="fecharModal(true)">
+            <div>
+                <mat-icon>arrow_right</mat-icon>
+                <p>Tudo certo.</p>
+            </div>
         </button>
     </div>
 </div>
