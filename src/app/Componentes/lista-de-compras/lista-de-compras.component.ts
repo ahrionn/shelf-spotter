@@ -39,9 +39,9 @@ export class ListaDeComprasComponent {
 
   ngOnInit(): void {
 
-    if (localStorage.getItem('itensEstoque')) {
-      this.itensEstoque = JSON.parse(localStorage.getItem('itensEstoque') || '[]');
-      return;
+    if (window.history.state.listaSelecionada !== undefined) {
+      this.itensAdicionais = window.history.state.listaSelecionada.map((item: { nome: any; }) => item.nome);
+      this.itensAdicionais.pop();
     }
 
     this.isLoadingRequest = true;

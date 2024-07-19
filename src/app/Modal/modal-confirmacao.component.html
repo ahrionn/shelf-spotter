@@ -1,18 +1,14 @@
 <div *ngIf="modalListaDeCompras" class="modal">
-    <h1>Confirmação</h1>
-    <p>Tudo certo?</p>
     <div class="buttons">
-        <button type="button" (click)="fecharModal(false)">
-            <div>
-                <mat-icon>arrow_left</mat-icon>
-                <p>Esqueci de um item!</p> 
-            </div>
+        <button style="flex-direction: row-reverse;" type="button" (click)="fecharModal(false)">
+            <h1 style="margin: 0;">Voltar</h1> 
         </button>
-        <button type="button" (click)="fecharModal(true)">
-            <div>
-                <mat-icon>arrow_right</mat-icon>
-                <p>Tudo certo.</p>
-            </div>
+        <div style="display: flex;">
+            <mat-icon>arrow_left</mat-icon>
+            <mat-icon>arrow_right</mat-icon>
+        </div>
+        <button style="flex-direction: row;" type="button" (click)="fecharModal(true)">
+            <h1 style="margin: 0;">Prosseguir</h1>
         </button>
     </div>
 </div>
@@ -20,17 +16,21 @@
 <div *ngIf="modalMinhasListas" class="modal">
     <h1>Esta foi sua lista nesse dia</h1>
     <section class="lista">
-        <ul>
-          <li *ngFor="let item of listaSelecionada"> {{ item.nome }} </li>
+        <ul style="list-style-type: none;
+        padding: 0;
+        display: flex;
+        margin: 0;
+        flex-direction: column;
+        align-items: center;">
+          <li *ngFor="let item of listaSelecionada"><i> {{ item.nome }} </i></li>
         </ul>
     </section>
-    <p>Confirma?</p>
     <div class="buttons">
-        <button type="button" (click)="fecharModal(true)">
-            <mat-icon>check</mat-icon>
+        <button style="justify-content: flex-end;" type="button" (click)="fecharModal(false)">
+            <mat-icon>keyboard_return</mat-icon>
         </button>
-        <button type="button" (click)="fecharModal(false)">
-            <mat-icon>close</mat-icon>
+        <button style="justify-content: flex-start;" type="button" (click)="fecharModal(true)">
+            <mat-icon>check</mat-icon>
         </button>
     </div>
 </div>
