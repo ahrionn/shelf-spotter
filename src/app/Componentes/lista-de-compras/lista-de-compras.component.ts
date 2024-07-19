@@ -17,7 +17,7 @@ export class ListaDeComprasComponent {
   itensEstoque: any[] = [];
   itensAdicionais: string[] = [];
   itensFiltrados: Observable<string[]> | undefined;
-  multiplicadores!: number[];
+  multiplicadores: number[] = [];
   minhasListas: any[] = [];
   modalAberto: boolean = false;
   modalListaDeCompras!: boolean;
