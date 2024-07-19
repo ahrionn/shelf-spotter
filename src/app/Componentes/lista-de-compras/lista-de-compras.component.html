@@ -6,8 +6,15 @@
   <section class="escolha">
   
     <mat-form-field>
-      <input type="text" placeholder="Faça sua lista aqui!" matInput [formControl]="formControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
+      <input 
+        type="text" 
+        placeholder="Faça sua lista aqui!" 
+        matInput 
+        [formControl]="formControl" 
+        [matAutocomplete]="auto">
+      <mat-autocomplete 
+        #auto="matAutocomplete" 
+        (optionSelected)="adicionarItem()">
         <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
           {{ option }}
         </mat-option>

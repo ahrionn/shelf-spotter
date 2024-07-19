@@ -78,7 +78,19 @@ export class ListaDeComprasComponent {
   }
 
   adicionarItem(): void {
+    
     const itemSelecionado = this.formControl.value.trim();
+
+    if (this.itensAdicionais.includes(itemSelecionado)) {
+      this.toastr.show('Item já adicionado.');
+      return;
+    }
+
+    if (!this.itensEstoque.map((item: { nome: any; }) => item.nome).includes(itemSelecionado)) {
+      this.toastr.show('Não temos esse item em estoque.');
+      return;
+    }
+
     if (itemSelecionado && !this.itensAdicionais.includes(itemSelecionado)) {
       this.itensAdicionais.push(itemSelecionado);
     }
