@@ -29,8 +29,13 @@
   
   <section class="lista">
     <ul>
-      <li *ngFor="let item of itensAdicionais"> 
+      <li *ngFor="let item of itensAdicionais; let i = index"> 
         {{ item }} 
+        <div class="multiplicador">
+          <button class="multiply-button" mat-icon-button (click)="subtractMultiply(i)"><mat-icon>remove</mat-icon></button>
+          x{{ this.multiplicadores[i] }}
+          <button class="multiply-button" mat-icon-button (click)="addMultiply(i)"><mat-icon>add</mat-icon></button>
+        </div>
         <button mat-icon-button class="remover-button" (click)="removerItem(item)">
           <mat-icon aria-label="Remover">delete</mat-icon>
         </button>

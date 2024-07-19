@@ -17,6 +17,7 @@ export class ListaDeComprasComponent {
   itensEstoque: any[] = [];
   itensAdicionais: string[] = [];
   itensFiltrados: Observable<string[]> | undefined;
+  multiplicadores!: number[];
   minhasListas: any[] = [];
   modalAberto: boolean = false;
   modalListaDeCompras!: boolean;
@@ -42,6 +43,7 @@ export class ListaDeComprasComponent {
     if (window.history.state.listaSelecionada !== undefined) {
       this.itensAdicionais = window.history.state.listaSelecionada.map((item: { nome: any; }) => item.nome);
       this.itensAdicionais.pop();
+      this.multiplicadores = new Array(this.itensAdicionais.length).fill(1);
     }
 
     this.isLoadingRequest = true;
@@ -93,6 +95,7 @@ export class ListaDeComprasComponent {
 
     if (itemSelecionado && !this.itensAdicionais.includes(itemSelecionado)) {
       this.itensAdicionais.push(itemSelecionado);
+      this.multiplicadores.push(1);
     }
     this.formControl.setValue('');
   }
@@ -101,6 +104,7 @@ export class ListaDeComprasComponent {
     const index = this.itensAdicionais.indexOf(item);
     if (index !== -1) {
       this.itensAdicionais.splice(index, 1);
+      this.multiplicadores.splice(index, 1);
     }
   }
 
@@ -147,7 +151,12 @@ export class ListaDeComprasComponent {
           console.error('Erro ao enviar lista para a API:', error);
         }
       });
-      this.router.navigateByUrl('/recibo', { state: { itensAEnviar: this.itensAEnviar } });
+      this.router.navigateByUrl('/recibo', { 
+        state: { 
+          itensAEnviar: this.itensAEnviar,
+          multiplicadores: this.multiplicadores
+        } 
+      });
       return;
     } else {
       this.modalAberto = false;
@@ -185,6 +194,17 @@ export class ListaDeComprasComponent {
     const dataCompleta = `${dia}/${mes}/${ano} (${diaDaSemana}) ${horas}:${minutos}`;
 
     return dataCompleta;
+  }
+
+  subtractMultiply(index: number) {
+    if (this.multiplicadores[index] === 1) {
+      return;
+    }
+    this.multiplicadores[index] -= 1;
+  }
+
+  addMultiply(index: number) {
+    this.multiplicadores[index] += 1;
   }
 
 }
