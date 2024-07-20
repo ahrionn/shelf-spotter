@@ -5,7 +5,7 @@
     font-weight: 500;"> Minhas Listas </h1>
     <section class="lista">
         <ul>
-            <li *ngFor="let item of minhasListas; let i = index"> 
+            <li *ngFor="let item of minhasListas.reverse(); let i = index"> 
                 <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
             </li>
         </ul>

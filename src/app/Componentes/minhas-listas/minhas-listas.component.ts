@@ -28,7 +28,26 @@ export class MinhasListasComponent {
   }
 
   redirectToShopping(index: any) {
-    this.listaSelecionada = this.minhasListasCopia[index];
+    let indexInverso;
+
+    switch (index) {
+      case 0: 
+        indexInverso = 4;
+        break;
+      case 1: 
+        indexInverso = 3;
+        break
+      case 3: 
+        indexInverso = 1;
+        break
+      case 4: 
+        indexInverso = 0;
+        break
+      default:
+        indexInverso = 2;
+    }
+
+    this.listaSelecionada = this.minhasListasCopia[indexInverso];
     if (!this.modalAberto) {
       this.abrirModal();
       return;

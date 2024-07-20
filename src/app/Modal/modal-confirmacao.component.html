@@ -21,8 +21,18 @@
         display: flex;
         margin: 0;
         flex-direction: column;
-        align-items: center;">
-          <li *ngFor="let item of listaSelecionada"><i> {{ item.nome }} </i></li>
+        align-items: center;
+        width: 70%;">
+        <li *ngFor="let item of listaSelecionada" style="width: 100%;">
+            <i *ngIf="item.nome" style="
+                display: flex; 
+                justify-content: space-between;
+                align-items: center;"> 
+                <div>{{ item.nome }} (x{{ item.qtd }})</div>
+                <div style="flex-grow: 1; border-bottom: 1px dashed;"></div>
+                <div>R${{ (item.preco*item.qtd).toFixed(2) }}</div>
+            </i>
+        </li>
         </ul>
     </section>
     <div class="buttons">

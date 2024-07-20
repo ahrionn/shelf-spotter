@@ -41,9 +41,11 @@ export class ListaDeComprasComponent {
   ngOnInit(): void {
 
     if (window.history.state.listaSelecionada !== undefined) {
+      window.history.state.listaSelecionada.pop();
       this.itensAdicionais = window.history.state.listaSelecionada.map((item: { nome: any; }) => item.nome);
-      this.itensAdicionais.pop();
-      this.multiplicadores = new Array(this.itensAdicionais.length).fill(1);
+      window.history.state.listaSelecionada.forEach((item: { qtd: number; }) => {
+        this.multiplicadores.push(item.qtd);
+      });
     }
 
     this.isLoadingRequest = true;
@@ -87,16 +89,24 @@ export class ListaDeComprasComponent {
   }
 
   adicionarItem(): void {
+
+    if (this.formControl.value === null || this.formControl.value === '') {
+      return;
+    }
     
     const itemSelecionado = this.formControl.value.trim();
 
     if (this.itensAdicionais.includes(itemSelecionado)) {
+      let itemInput = document.getElementById('itemInput') as HTMLInputElement;
+      itemInput.value = '';
       this.toastr.show('Item já adicionado.');
       return;
     }
 
     if (!this.itensEstoque.map((item: { nome: any; }) => item.nome).includes(itemSelecionado)) {
-      this.toastr.show('Não temos esse item em estoque.');
+      let itemInput = document.getElementById('itemInput') as HTMLInputElement;
+      itemInput.value = '';
+      this.toastr.show('Não temos esse item em estoque :(');
       return;
     }
 

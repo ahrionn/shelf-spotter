@@ -16,7 +16,7 @@
           <li class="precos">
             <h2 style="color: #298AB4;">.</h2>
             <div *ngFor="let item of grupo.itens" class="precoItem">
-              - <i>R${{ item.preco * item.qtd }}</i>
+              - <i>R${{ (item.preco * item.qtd).toFixed(2) }}</i>
             </div>
           </li>
         </ng-container>
