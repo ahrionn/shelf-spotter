@@ -21,7 +21,7 @@ export class ReciboComponent implements OnInit {
       this.itensAEnviar = navigation.itensAEnviar;
       this.itensAgrupados = this.agruparItensPorCorredor();
       for (let i = 0; i < this.itensAEnviar.length; i++) {
-        this.precoTotalLista += parseFloat(this.itensAEnviar[i].preco);
+        this.precoTotalLista += parseFloat(this.itensAEnviar[i].preco) * this.itensAEnviar[i].qtd;
       }
       this.precoTotalLista = parseFloat(this.precoTotalLista.toFixed(2));
     }
