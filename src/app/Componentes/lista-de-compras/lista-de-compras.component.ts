@@ -60,6 +60,13 @@ export class ListaDeComprasComponent {
       },
       error: (error) => {
         this.isLoadingRequest = false;
+
+        // Busca itensEstoque do cache quando o usuário estiver offline (mobile only);
+        try {
+          let estoqueCache = localStorage.getItem('itensEstoque');
+          this.itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
+        } catch {}
+
         console.error('Erro ao buscar itens do estoque.', error);
       }
     });
@@ -119,10 +126,18 @@ export class ListaDeComprasComponent {
     } 
     if (enviarLista) {
       this.modalAberto = false;
+
       this.itensAEnviar = this.itensEstoque.filter((item: { nome: string; }) => {
         return this.itensAdicionais.includes(item.nome);
       });
-      this.isLoadingRequest = true;
+
+      this.itensAEnviar.forEach((item: { index: number; nome: string; }) => {
+        item.index = this.itensAdicionais.indexOf(item.nome);
+      });
+
+      this.itensAEnviar.forEach((item: { qtd: number; index: number }) => {
+        item.qtd = this.multiplicadores[item.index];
+      });
 
       // Salva lista no cache do navegador
       let storedListas = localStorage['minhasListas'];
@@ -141,6 +156,7 @@ export class ListaDeComprasComponent {
       }
       this.itensAEnviar.pop();
 
+      this.isLoadingRequest = true;
       this.http.post<any>(`${this.apiUrl}/api/listaCompras`, this.itensAEnviar).subscribe({
         next: (response) => {
           this.isLoadingRequest = false;
@@ -151,12 +167,8 @@ export class ListaDeComprasComponent {
           console.error('Erro ao enviar lista para a API:', error);
         }
       });
-      this.router.navigateByUrl('/recibo', { 
-        state: { 
-          itensAEnviar: this.itensAEnviar,
-          multiplicadores: this.multiplicadores
-        } 
-      });
+
+      this.router.navigateByUrl('/recibo', { state: { itensAEnviar: this.itensAEnviar }});
       return;
     } else {
       this.modalAberto = false;

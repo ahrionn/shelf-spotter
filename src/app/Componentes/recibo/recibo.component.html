@@ -6,7 +6,7 @@
           <li class="grupo">
             <h2>Corredor {{ grupo.corredor }}</h2>
             <div *ngFor="let item of grupo.itens" class="item">
-              {{ item.nome }}
+              {{ item.nome }} x{{ item.qtd }}
             </div>
           </li>
         </ng-container>
