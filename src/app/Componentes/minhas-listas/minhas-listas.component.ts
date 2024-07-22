@@ -28,26 +28,33 @@ export class MinhasListasComponent {
   }
 
   redirectToShopping(index: any) {
+    
     let indexInverso;
-
-    switch (index) {
-      case 0: 
-        indexInverso = 4;
-        break;
-      case 1: 
-        indexInverso = 3;
-        break
-      case 3: 
-        indexInverso = 1;
-        break
-      case 4: 
-        indexInverso = 0;
-        break
-      default:
-        indexInverso = 2;
+    let ordemInversa;
+    if (this.minhasListasCopia.length === 5) {
+      ordemInversa = true;
+      switch (index) {
+        case 0: 
+          indexInverso = 4;
+          break;
+        case 1: 
+          indexInverso = 3;
+          break
+        case 3: 
+          indexInverso = 1;
+          break
+        case 4: 
+          indexInverso = 0;
+          break
+        default:
+          indexInverso = 2;
+      }
+      this.listaSelecionada = this.minhasListasCopia[indexInverso];
+    } else {
+      ordemInversa = false;
+      this.listaSelecionada = this.minhasListasCopia[index];
     }
 
-    this.listaSelecionada = this.minhasListasCopia[indexInverso];
     if (!this.modalAberto) {
       this.abrirModal();
       return;
