@@ -4,18 +4,13 @@
     font-size: xx-large;
     font-weight: 500;"> Minhas Listas </h1>
     <section class="lista">
-        <ul *ngIf="minhasListas.length === 5" >
-            <li *ngFor="let item of minhasListas.reverse(); let i = index"> 
+        <ul *ngIf="minhasListas.length !== 0">
+            <li *ngFor="let item of reversedList; let i = index">
                 <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
             </li>
         </ul>
-        <ul *ngIf="minhasListas.length < 5 && minhasListas.length !== 0" >
-            <li *ngFor="let item of minhasListas; let i = index"> 
-                <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
-            </li>
-        </ul>
-        <h3 style="margin: 0;" *ngIf="minhasListas.length === 0" >Você ainda não possui listas.</h3>
-    </section>
+        <h3 style="margin: 0;" *ngIf="minhasListas.length === 0">Você ainda não possui listas.</h3>
+    </section>    
 
     <app-modal-confirmacao 
     [modalMinhasListas]="modalMinhasListas"

@@ -13,6 +13,7 @@ export class MinhasListasComponent {
   modalAberto: boolean = false;
   listaSelecionada: any;
   modalMinhasListas!: boolean;
+  reversedList: string[] = [];
 
   constructor (
     private router: Router, 
@@ -25,38 +26,18 @@ export class MinhasListasComponent {
     for (let i = 0; i < this.minhasListas.length; i++) {
       this.minhasListas[i] = this.minhasListas[i][this.minhasListas[i].length - 1]
     }
+    this.reversedList = [...this.minhasListas].reverse();
   }
 
-  redirectToShopping(index: any) {
-    
-    let indexInverso;
-    if (this.minhasListasCopia.length === 5) {
-      switch (index) {
-        case 0: 
-          indexInverso = 4;
-          break;
-        case 1: 
-          indexInverso = 3;
-          break
-        case 3: 
-          indexInverso = 1;
-          break
-        case 4: 
-          indexInverso = 0;
-          break
-        default:
-          indexInverso = 2;
-      }
-      this.listaSelecionada = this.minhasListasCopia[indexInverso];
-    } else {
-      this.listaSelecionada = this.minhasListasCopia[index];
-    }
-
+  redirectToShopping(index: number) {
+    let indexInverso: number;
+    indexInverso = this.minhasListas.length - 1 - index;
+    this.listaSelecionada = this.minhasListasCopia[indexInverso];
     if (!this.modalAberto) {
       this.abrirModal();
-      return;
     }
   }
+  
 
   abrirModal() {
     this.modalMinhasListas = true;
