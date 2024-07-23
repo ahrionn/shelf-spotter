@@ -30,9 +30,7 @@ export class MinhasListasComponent {
   redirectToShopping(index: any) {
     
     let indexInverso;
-    let ordemInversa;
     if (this.minhasListasCopia.length === 5) {
-      ordemInversa = true;
       switch (index) {
         case 0: 
           indexInverso = 4;
@@ -51,7 +49,6 @@ export class MinhasListasComponent {
       }
       this.listaSelecionada = this.minhasListasCopia[indexInverso];
     } else {
-      ordemInversa = false;
       this.listaSelecionada = this.minhasListasCopia[index];
     }
 
