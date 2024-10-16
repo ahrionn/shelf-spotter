@@ -1,15 +1,12 @@
-html {
-    background-color: #298AB4;
-    color: white;
-    width: 100vw;
-    height: 100vh;
-}
-body { 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    display: flex;
-    width: 100vw;
-    height: 100vh;
+body, html {
     margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    overflow: hidden;
+    color: white;
+    background-color: #298AB4;
 }
 /*==================
  HEADER & FOOTER
