@@ -44,3 +44,31 @@
         </button>
     </div>
 </div>
+
+<div *ngIf="modalAddItem" class="modal">
+    <h1>Informações do novo item</h1>
+    <section class="lista">
+        <ul style="list-style: none; padding: 0;">
+            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <label for="nome" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Nome</label>
+                <input [(ngModel)]="newItemName" id="nome" type="text" style="flex: 2; font-size: 20px; padding: 10px; width: 150px;">
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <label for="corredor" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Corredor</label>
+                <input [(ngModel)]="newItemAisle" id="corredor" type="number" style="flex: 2; font-size: 20px; padding: 10px; width: 150px;">
+            </li>
+            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <label for="preco" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Preço</label>
+                <input [(ngModel)]="newItemPrice" id="preco" appCurrencyMask type="text" style="flex: 2; font-size: 20px; padding: 10px; width: 150px;" placeholder="R$ 0,00">
+            </li>
+        </ul>               
+    </section>
+    <div class="buttons">
+        <button style="justify-content: flex-end;" type="button" (click)="fecharModalAddItem(false)">
+            <mat-icon>keyboard_return</mat-icon>
+        </button>
+        <button style="justify-content: flex-start;" type="button" (click)="fecharModalAddItem(true)">
+            <mat-icon>check</mat-icon>
+        </button>
+    </div>
+</div>

@@ -36,3 +36,14 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.configs {
+    position: absolute;
+    top: 88%;
+    right: 8%;
+    border: none;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    font-size: large;
+}

@@ -21,6 +21,8 @@ import { HeaderComponent } from './Componentes/header/header.component';
 import { FooterComponent } from './Componentes/footer/footer.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { MinhasListasComponent } from './Componentes/minhas-listas/minhas-listas.component';
+import { ConfigsComponent } from './Componentes/configs/configs.component';
+import { CurrencyMaskDirective } from './Diretivas/currencyMask/currency-mask.directive';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { MinhasListasComponent } from './Componentes/minhas-listas/minhas-listas
     FooterComponent,
     PaginaInicialComponent,
     MinhasListasComponent,
+    ConfigsComponent,
+    CurrencyMaskDirective
   ],
   imports: [
     BrowserModule,

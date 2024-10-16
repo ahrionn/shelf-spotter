@@ -1,0 +1,47 @@
+<div class="loading" *ngIf="isLoadingRequest">
+    <mat-spinner class="custom-spinner" [diameter]="70"></mat-spinner>
+</div>
+
+<div class="container">
+
+    <h1 style="margin-bottom: 5%;
+    font-size: xx-large;
+    font-weight: 500;"> Configurações </h1>
+    <section class="crud">
+        <ul>
+            <li>
+                <button class="opcao" (click)="onAddItem()"> Adicionar Item </button>
+            </li>
+            <li>
+                <button class="opcao" (click)="onSearchItem()"> Buscar Item </button>
+            </li>
+            <li>
+                <button class="opcao" (click)="onUpdateItem()"> Atualizar Item </button>
+            </li>
+            <li>
+                <button class="opcao" (click)="onDeleteItem()"> Remover Item </button>
+            </li>
+        </ul>
+    </section>
+
+    <app-modal-confirmacao 
+    [modalAddItem]="modalAddItem"
+    *ngIf="modalAberto" 
+    (fecharAddItem)="fecharModal($event)"
+    style="
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    ">
+    </app-modal-confirmacao>
+
+</div>
+
+<button class="voltar" (click)="redirectToMain()">
+    <i class="fas fa-home"></i>
+</button>

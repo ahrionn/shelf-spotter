@@ -15,4 +15,8 @@ export class PaginaInicialComponent {
   redirect(rota: string) {
     this.router.navigateByUrl(`/${rota}`);
   }
+
+  redirectToConfigs() {
+    this.router.navigateByUrl('/configs');
+  }
 }
