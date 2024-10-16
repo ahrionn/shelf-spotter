@@ -1,14 +1,14 @@
 html {
     background-color: #298AB4;
     color: white;
-    height: 100%;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 body { 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     display: flex;
-    height: 100%;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
 }
 /*==================
