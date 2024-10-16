@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 import { MinhasListasComponent } from './Componentes/minhas-listas/minhas-listas.component';
 import { ConfigsComponent } from './Componentes/configs/configs.component';
 import { CurrencyMaskDirective } from './Diretivas/currencyMask/currency-mask.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,12 @@ import { CurrencyMaskDirective } from './Diretivas/currencyMask/currency-mask.di
       progressBar: false,
       enableHtml: false,
       newestOnTop: true,
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     })
   ],
   providers: [
