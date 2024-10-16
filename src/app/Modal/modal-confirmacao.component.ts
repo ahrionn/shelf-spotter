@@ -42,6 +42,11 @@ export class ModalConfirmacaoComponent {
         return;
       }
 
+      let valor = this.newItemPrice.replace(/[^\d,]/g, '');
+      valor = valor.replace(/,/g, '').replace(/(\d{2})$/, '.$1');
+      const valorCorreto = parseFloat(valor).toFixed(2);
+      this.newItemPrice = `R$ ${valorCorreto.replace('.', ',')}`;
+
       this.newItemPrice = this.newItemPrice.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
       let objNewItem = {
         'nome': this.newItemName,
