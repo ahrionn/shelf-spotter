@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingInicialService } from '../../LoadingService/loading-inicial.service';
 
 @Component({
   selector: 'app-lista-de-compras',
@@ -30,7 +31,8 @@ export class ListaDeComprasComponent {
   constructor(
     private router: Router, 
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private loadingInicialService: LoadingInicialService
   ) {
     this.itensFiltrados = this.formControl.valueChanges.pipe(
       startWith(''),
@@ -38,16 +40,24 @@ export class ListaDeComprasComponent {
     );
   }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
     if (window.history.state.listaSelecionada !== undefined) {
-      window.history.state.listaSelecionada.pop();
-      this.itensAdicionais = window.history.state.listaSelecionada.map((item: { nome: any; }) => item.nome);
-      window.history.state.listaSelecionada.forEach((item: { qtd: number; }) => {
-        this.multiplicadores.push(item.qtd);
+      this.loadingInicial();
+    } else {
+      this.loadingInicialService.itensEstoque$.subscribe((itens) => {
+        this.itensEstoque = itens;
+        this.inicializaItensFiltrados();
       });
     }
+  }
 
+  loadingInicial() {
+    window.history.state.listaSelecionada.pop();
+    this.itensAdicionais = window.history.state.listaSelecionada.map((item: { nome: any; }) => item.nome);
+    window.history.state.listaSelecionada.forEach((item: { qtd: number; }) => {
+      this.multiplicadores.push(item.qtd);
+    });
+    
     this.isLoadingRequest = true;
     this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
       next: (response) => {
