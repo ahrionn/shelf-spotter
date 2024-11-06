@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ConfigsComponent {
 
   modalAddItem!: boolean;
+  modalSearchItem!: boolean;
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
   apiUrl = 'https://api-spotter.onrender.com';
@@ -32,7 +33,8 @@ export class ConfigsComponent {
   }
 
   onSearchItem() {
-
+    this.modalSearchItem = true;
+    this.modalAberto = true;
   }
 
   onUpdateItem() {
@@ -45,6 +47,7 @@ export class ConfigsComponent {
 
   fecharModal(objNewItem: any) {
     this.modalAddItem = false;
+    this.modalSearchItem = false;
     if (objNewItem !== undefined) {
       this.modalAberto = false;
       this.isLoadingRequest = true;

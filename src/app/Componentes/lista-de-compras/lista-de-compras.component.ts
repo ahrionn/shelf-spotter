@@ -176,18 +176,6 @@ export class ListaDeComprasComponent {
       }
       this.itensAEnviar.pop();
 
-      this.isLoadingRequest = true;
-      this.http.post<any>(`${this.apiUrl}/api/listaCompras`, this.itensAEnviar).subscribe({
-        next: (response) => {
-          this.isLoadingRequest = false;
-          console.log('Lista enviada com sucesso para a API:', response);
-        },
-        error: (error) => {
-          this.isLoadingRequest = false;
-          console.error('Erro ao enviar lista para a API:', error);
-        }
-      });
-
       this.router.navigateByUrl('/recibo', { state: { itensAEnviar: this.itensAEnviar }});
       return;
     } else {

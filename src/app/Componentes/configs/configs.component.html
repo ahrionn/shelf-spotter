@@ -26,8 +26,10 @@
 
     <app-modal-confirmacao 
     [modalAddItem]="modalAddItem"
+    [modalSearchItem]="modalSearchItem"
     *ngIf="modalAberto" 
     (fecharAddItem)="fecharModal($event)"
+    (fecharSearchItem)="fecharModal($event)"
     style="
     position: fixed;
     height: 100%;
