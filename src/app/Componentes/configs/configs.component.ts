@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { LoadingInicialService } from '../../LoadingService/loading-inicial.service';
 
 @Component({
   selector: 'app-configs',
@@ -20,7 +21,8 @@ export class ConfigsComponent {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private loadingInicialService: LoadingInicialService
   ) { }
 
   redirectToMain() {
@@ -52,10 +54,9 @@ export class ConfigsComponent {
       this.modalAberto = false;
       this.isLoadingRequest = true;
       this.http.post<any>(`${this.apiUrl}/api/addItem`, objNewItem).subscribe({
-        next: (response) => {
-          this.isLoadingRequest = false;
+        next: (responseAddItem) => {
+          this.atualizaLista();
           this.toastr.show('Item adicionado com sucesso!');
-          console.log('Item adicionado com sucesso.', response);
         },
         error: (error) => {
           this.isLoadingRequest = false;
@@ -65,6 +66,22 @@ export class ConfigsComponent {
     } else {
       this.modalAberto = false;
     }
+  }
+
+  atualizaLista() {
+    this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
+      next: (response) => {
+        this.isLoadingRequest = false;
+        let itensEstoque: any = response.sort((a, b) => a.nome.localeCompare(b.nome));
+        this.loadingInicialService.atualizarItensEstoque(itensEstoque);
+        itensEstoque = JSON.stringify(itensEstoque);
+        localStorage.setItem('itensEstoque', itensEstoque);
+      },
+      error: (error) => {
+        this.isLoadingRequest = false;
+        console.error('Erro ao buscar itens do estoque.', error);
+      }
+    });
   }
 
 }
