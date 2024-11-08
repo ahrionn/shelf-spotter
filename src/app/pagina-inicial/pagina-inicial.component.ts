@@ -21,18 +21,27 @@ export class PaginaInicialComponent {
   ) { }
 
   ngOnInit() {
-    this.isLoadingRequest = true;
-    this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
-      next: (response) => {
-        this.isLoadingRequest = false;
-        const itensEstoque = response.sort((a, b) => a.nome.localeCompare(b.nome));
-        this.loadingInicialService.atualizarItensEstoque(itensEstoque);
-      },
-      error: (error) => {
-        this.isLoadingRequest = false;
-        console.error('Erro ao buscar itens do estoque.', error);
-      }
-    });
+    let estoqueCache = localStorage.getItem('itensEstoque');
+    if (estoqueCache === null || estoqueCache === undefined || estoqueCache === '') {
+      this.isLoadingRequest = true;
+      this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
+        next: (response) => {
+          this.isLoadingRequest = false;
+          let itensEstoque: any = response.sort((a, b) => a.nome.localeCompare(b.nome));
+          this.loadingInicialService.atualizarItensEstoque(itensEstoque);
+          itensEstoque = JSON.stringify(itensEstoque);
+          localStorage.setItem('itensEstoque', itensEstoque);
+        },
+        error: (error) => {
+          this.isLoadingRequest = false;
+          console.error('Erro ao buscar itens do estoque.', error);
+        }
+      });
+    } else {
+      let itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
+      itensEstoque = itensEstoque.sort((a: { nome: string; }, b: { nome: any; }) => a.nome.localeCompare(b.nome));
+      this.loadingInicialService.atualizarItensEstoque(itensEstoque);
+    }
   }
 
   redirect(rota: string) {

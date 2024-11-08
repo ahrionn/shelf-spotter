@@ -58,30 +58,8 @@ export class ListaDeComprasComponent {
       this.multiplicadores.push(item.qtd);
     });
     
-    this.isLoadingRequest = true;
-    this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
-      next: (response) => {
-        this.isLoadingRequest = false;
-        this.itensEstoque = response.sort((a, b) => a.nome.localeCompare(b.nome));
-
-        // Guarda lista de estoque no cache
-        this.cacheItensEstoque = JSON.stringify(this.itensEstoque);
-        localStorage.setItem('itensEstoque', this.cacheItensEstoque);
-
-        this.inicializaItensFiltrados();
-      },
-      error: (error) => {
-        this.isLoadingRequest = false;
-
-        // Busca itensEstoque do cache quando o usuário estiver offline (mobile only);
-        try {
-          let estoqueCache = localStorage.getItem('itensEstoque');
-          this.itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
-        } catch {}
-
-        console.error('Erro ao buscar itens do estoque.', error);
-      }
-    });
+    let estoqueCache = localStorage.getItem('itensEstoque');
+    this.itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
   }
 
   private inicializaItensFiltrados(): void {
