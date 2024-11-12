@@ -24,6 +24,7 @@ import { MinhasListasComponent } from './Componentes/minhas-listas/minhas-listas
 import { ConfigsComponent } from './Componentes/configs/configs.component';
 import { CurrencyMaskDirective } from './Diretivas/currencyMask/currency-mask.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     PaginaInicialComponent,
     MinhasListasComponent,
     ConfigsComponent,
-    CurrencyMaskDirective
+    CurrencyMaskDirective,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
