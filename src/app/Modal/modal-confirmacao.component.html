@@ -25,12 +25,12 @@
     </div>
 </div>
 
-<div *ngIf="modalMinhasListas">
+<div *ngIf="modalMinhasListas" style="
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    transform: translate(0%, -35%);">
     <div class="modal-dialog" role="document" style="    
-    top: 29rem;
-    background: #298AB4;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background: #298AB4;
     overflow-y: auto;
     text-align: center;
@@ -73,8 +73,11 @@
     </div>
 </div>
 
-<div *ngIf="modalAddItem">
-    <div class="modal-dialog" role="document" style="top: 16rem; background: #298AB4;">
+<div *ngIf="modalAddItem" style="
+    position: absolute;
+    top: 26%;
+    width: 100%;">
+    <div class="modal-dialog" role="document" style="background: #298AB4;">
         <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
                 0px -8px 16px rgba(0, 0, 0, 0.3);">
             <div class="modal-header p-5 pb-4 border-bottom-0" style="justify-content: space-between;">
@@ -106,8 +109,11 @@
     </div>
 </div>
 
-<div *ngIf="modalSearchItem">
-    <div class="modal-dialog" role="document" style="top: 16rem; background: #298AB4;">
+<div *ngIf="modalSearchItem" style="
+    position: absolute;
+    top: 26%;
+    width: 100%;">
+    <div class="modal-dialog" role="document" style="background: #298AB4;">
         <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
                 0px -8px 16px rgba(0, 0, 0, 0.3);">
             <div class="modal-body p-5" style="text-align: center;">
@@ -122,7 +128,7 @@
                     </mat-autocomplete>
                 </mat-form-field>
 
-                <section class="lista">
+                <section>
                     <ul style="list-style: none; padding: 0;">
                         <li
                             style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
