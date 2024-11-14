@@ -41,6 +41,18 @@ export class PaginaInicialComponent {
       let itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
       itensEstoque = itensEstoque.sort((a: { nome: string; }, b: { nome: any; }) => a.nome.localeCompare(b.nome));
       this.loadingInicialService.atualizarItensEstoque(itensEstoque);
+
+      // Requisição inicial só pra "acordar"
+      this.http.get(`${this.apiUrl}/api/listaEstoque`).subscribe({
+        next: () => {
+          this.isLoadingRequest = false;
+          console.log('API acordada com sucesso');
+        },
+        error: (error) => {
+          this.isLoadingRequest = false;
+          console.error('Erro ao tentar acordar a API.', error);
+        }
+      });      
     }
   }
 
