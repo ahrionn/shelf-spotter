@@ -1,35 +1,26 @@
-<div class="container">
-
-    <h1 style="margin-bottom: 5%;
+<h1 style="margin-bottom: 5%;
     font-size: xx-large;
     font-weight: 500;"> Minhas Listas </h1>
-    <section class="lista">
-        <ul *ngIf="minhasListas.length !== 0">
-            <li *ngFor="let item of reversedList; let i = index">
-                <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
-            </li>
-        </ul>
-        <h3 style="margin: 0;" *ngIf="minhasListas.length === 0">Você ainda não possui listas.</h3>
-    </section>    
+<section class="lista">
+    <ul *ngIf="minhasListas.length !== 0">
+        <li *ngFor="let item of reversedList; let i = index">
+            <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
+        </li>
+    </ul>
+    <h3 style="margin: 0;" *ngIf="minhasListas.length === 0">Você ainda não possui listas.</h3>
+</section>
 
-    <app-modal-confirmacao 
-    [modalMinhasListas]="modalMinhasListas"
-    [listaSelecionada]="listaSelecionada"
-    *ngIf="modalAberto" 
-    (fechar)="fecharModal($event)"
-    style="
+<app-modal-confirmacao [modalMinhasListas]="modalMinhasListas" [listaSelecionada]="listaSelecionada" *ngIf="modalAberto"
+    (fechar)="fecharModal($event)" style="
     position: fixed;
     height: 100%;
     width: 100%;
-    display: flex;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
     ">
-    </app-modal-confirmacao>
-
-</div>
+</app-modal-confirmacao>
 
 <button class="voltar" (click)="redirectToMain()">
     <i class="fas fa-home"></i>

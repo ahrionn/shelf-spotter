@@ -1,41 +1,37 @@
-<div class="container">
-  <section class="lista">
-    <div class="lista-wrapper">
-      <ul>
-        <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
-          <li class="grupo">
-            <h2>Corredor {{ grupo.corredor }}</h2>
-            <div *ngFor="let item of grupo.itens" class="item">
-              {{ item.nome }} (x{{ item.qtd }})
-            </div>
-          </li>
-        </ng-container>
-      </ul>
-      <ul>
-        <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
-          <li class="precos">
-            <h2 style="color: #298AB4;">.</h2>
-            <div *ngFor="let item of grupo.itens" class="precoItem">
-              - <i>R${{ (item.preco * item.qtd).toFixed(2) }}</i>
-            </div>
-          </li>
-        </ng-container>
-      </ul>
-    </div>
-  </section>
+<section class="lista">
+  <div class="lista-wrapper">
+    <ul>
+      <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+        <li class="grupo">
+          <h2>Corredor {{ grupo.corredor }}</h2>
+          <div *ngFor="let item of grupo.itens" class="item">
+            {{ item.nome }} (x{{ item.qtd }})
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+    <ul>
+      <ng-container *ngFor="let grupo of agruparItensPorCorredor()">
+        <li class="precos">
+          <h2 style="color: #298AB4;">.</h2>
+          <div *ngFor="let item of grupo.itens" class="precoItem">
+            - <i>R${{ (item.preco * item.qtd).toFixed(2) }}</i>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</section>
 
-  <h2 class="total-preco">R${{ this.precoTotalLista }}</h2>
+<h2 class="total-preco">R${{ this.precoTotalLista }}</h2>
 
-  <section class="botao-voltar">
-    <button mat-icon-button class="voltar-button" (click)="voltarParaLista()">
-      <mat-icon
-      style="padding-left: 7px;">keyboard_arrow_left</mat-icon>
-      <p style="
+<section class="botao-voltar">
+  <button mat-icon-button class="voltar-button" (click)="voltarParaLista()">
+    <mat-icon style="padding-left: 7px;">keyboard_arrow_left</mat-icon>
+    <p style="
       margin-bottom: 0;
       width: 65%;
       font-variant-caps: small-caps;
       font-size: large;">voltar</p>
-    </button>
-  </section>
-
-</div>
+  </button>
+</section>

@@ -17,8 +17,6 @@ import { ListaDeComprasComponent } from './Componentes/lista-de-compras/lista-de
 import { ReciboComponent } from './Componentes/recibo/recibo.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ModalConfirmacaoComponent } from './Modal/modal-confirmacao.component';
-import { HeaderComponent } from './Componentes/header/header.component';
-import { FooterComponent } from './Componentes/footer/footer.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { MinhasListasComponent } from './Componentes/minhas-listas/minhas-listas.component';
 import { ConfigsComponent } from './Componentes/configs/configs.component';
@@ -32,8 +30,6 @@ import { LoaderComponent } from './loader/loader.component';
     ListaDeComprasComponent,
     ReciboComponent,
     ModalConfirmacaoComponent,
-    HeaderComponent,
-    FooterComponent,
     PaginaInicialComponent,
     MinhasListasComponent,
     ConfigsComponent,

@@ -2,38 +2,30 @@
   <app-loader></app-loader>
 </div>
 
-<div class="container">
-  <section class="escolha">
-  
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+
+  <div class="escolha">
     <mat-form-field>
-      <input 
-        type="text" 
-        placeholder="Faça sua lista aqui!" 
-        id="itemInput"
-        matInput 
-        [formControl]="formControl" 
+      <input type="text" placeholder="Faça sua lista aqui!" id="itemInput" matInput [formControl]="formControl"
         [matAutocomplete]="auto">
-      <mat-autocomplete 
-        #auto="matAutocomplete" 
-        (optionSelected)="adicionarItem()">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="adicionarItem()">
         <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
           {{ option }}
         </mat-option>
       </mat-autocomplete>
-    </mat-form-field>    
-  
+    </mat-form-field>
     <button mat-icon-button class="add-button" (click)="adicionarItem()">
       <mat-icon aria-label="Adicionar">add</mat-icon>
     </button>
-  
-  </section>
-  
+  </div>
+
   <section class="lista">
-    <ul>
-      <li *ngFor="let item of itensAdicionais; let i = index"> 
-        {{ item }} 
+    <ul class="list-group">
+      <li *ngFor="let item of itensAdicionais; let i = index" class="list-group-item">
+        {{ item }}
         <div class="multiplicador">
-          <button class="multiply-button" mat-icon-button (click)="subtractMultiply(i)"><mat-icon>remove</mat-icon></button>
+          <button class="multiply-button" mat-icon-button
+            (click)="subtractMultiply(i)"><mat-icon>remove</mat-icon></button>
           x{{ this.multiplicadores[i] }}
           <button class="multiply-button" mat-icon-button (click)="addMultiply(i)"><mat-icon>add</mat-icon></button>
         </div>
@@ -43,37 +35,31 @@
       </li>
     </ul>
   </section>
-  
-  <section class="botao-enviar">
-    <button mat-icon-button class="enviar-button" (click)="enviarItens()">
-      <p style="
+</div>
+
+<section class="botao-enviar">
+  <button mat-icon-button class="enviar-button" (click)="enviarItens()">
+    <p style="
       margin-bottom: 0;
       width: 65%;
       font-variant-caps: small-caps;
-      font-size: large;">comprar</p>
-      <mat-icon
-      style="padding-left: 7px;">keyboard_arrow_right</mat-icon>
-    </button>
-  </section>
-  
-  <app-modal-confirmacao 
-  [modalListaDeCompras]="modalListaDeCompras"
-  *ngIf="modalAberto" 
-  (fechar)="fecharModal($event)"
+      font-size: x-large;
+      font-weight: 700;">comprar</p>
+    <mat-icon style="padding-left: 7px;">keyboard_arrow_right</mat-icon>
+  </button>
+</section>
+
+<app-modal-confirmacao [modalListaDeCompras]="modalListaDeCompras" *ngIf="modalAberto" (fechar)="fecharModal($event)"
   style="
     position: fixed;
     height: 100%;
     width: 100%;
-    display: flex;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
   ">
-  </app-modal-confirmacao>
-  
-  <div id="overlay"></div>
-</div>
+</app-modal-confirmacao>
 
 <button class="voltar" (click)="redirectToMain()">
   <i class="fas fa-home"></i>

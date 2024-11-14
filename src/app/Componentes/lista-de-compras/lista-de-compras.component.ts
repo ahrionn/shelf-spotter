@@ -88,6 +88,7 @@ export class ListaDeComprasComponent {
       let itemInput = document.getElementById('itemInput') as HTMLInputElement;
       itemInput.value = '';
       this.toastr.show('Item já adicionado.');
+      this.formControl.setValue('');
       return;
     }
 
@@ -95,6 +96,7 @@ export class ListaDeComprasComponent {
       let itemInput = document.getElementById('itemInput') as HTMLInputElement;
       itemInput.value = '';
       this.toastr.show('Não temos esse item em estoque :(');
+      this.formControl.setValue('');
       return;
     }
 

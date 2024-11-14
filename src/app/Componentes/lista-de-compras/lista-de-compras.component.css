@@ -12,9 +12,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15%;
   position: fixed;
   z-index: 1000;
+  top: 6%;
 }
 
 /*==================
@@ -67,34 +67,34 @@
  LISTA ITENS
 ==================*/
 ul {
-  list-style-type: none;
-  padding: 0;
   width: 100%;
-  margin-bottom: 40%;
 }
 li {
-  margin-bottom: 12%;
+  margin-bottom: 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: large;
-  border-bottom: 1px solid white;
+  border-radius: 3rem;
 }
 .lista {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35%;
   width: 85%;
   position: absolute;
-  right: 7%;
+  max-height: 65%;
+}
+.list-group {
+  overflow: auto;
+  height: 67vh;
+}
+.list-group-item {
+  border-radius: 3rem !important;
 }
 /*==================
  REMOVE
 ==================*/
 .remover-button {
   background-color: transparent; 
-  color: white; 
   width: 40px; 
   height: 40px;
   transition: background-color 0.3s ease;
@@ -119,7 +119,8 @@ li {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 82%;
+  top: 88vh;
+  right: 31%;
 }
 .enviar-button {
   background-color: #ffffff;
@@ -147,7 +148,7 @@ li {
 
 .voltar {
   position: absolute;
-  top: 88%;
+  top: 91%;
   right: 82%;
   border: none;
   height: 45px;
@@ -168,5 +169,4 @@ li {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: white;
 }

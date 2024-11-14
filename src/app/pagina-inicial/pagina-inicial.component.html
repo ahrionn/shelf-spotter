@@ -1,26 +1,21 @@
 <div class="loading" *ngIf="isLoadingRequest">
     <app-loader></app-loader>
 </div>
-
-<div class="container">
-    <div class="logo_inicial">
-        <img src="/assets/img-project/logo_inicial.png" alt="logo">
-    </div>
-    <div class="botoes">
-        <button class="criar-lista" (click)="redirect('lista-de-compras')">
-            <p style="
-            margin-bottom: 0;
-            width: 65%;
-            font-variant-caps: small-caps;
-            font-size: large;">criar lista</p>
-        </button>
-        <button class="minhas-listas" (click)="redirect('minhas-listas')">
-            <p style="
-            margin-bottom: 0;
-            width: 65%;
-            font-variant-caps: small-caps;
-            font-size: large;">minhas listas</p>
-        </button>
+<div class="px-4 py-5 my-5 text-center" style="
+    margin: 0 !important;
+    height: 100%;">
+    <img class="d-block mx-auto mb-4" src="/assets/img-project/logo_inicial.png" alt="logo">
+    <h1 class="display-5 fw-bold text-body-emphasis">Shelf Spotter</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            Um jeito rápido de fazer compras ;)
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="redirect('lista-de-compras')">Criar
+                Lista</button>
+            <button type="button" class="btn btn-lg px-4" style="color: black;"
+                (click)="redirect('minhas-listas')">Minhas Listas</button>
+        </div>
     </div>
 </div>
 

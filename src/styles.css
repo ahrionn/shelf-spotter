@@ -3,11 +3,14 @@ html {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     overflow: hidden;
     color: white;
     background-color: #298AB4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-container {
@@ -20,18 +23,6 @@ html {
 /*==================
  HEADER & FOOTER
 ==================*/
-app-header {
-    background-color: #002B48;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-}
 
 .logo {
     padding: 0px 7% 0 7%;
@@ -40,19 +31,6 @@ app-header {
 .logo img {
     width: 100%;
     margin: 5% 0 5% 0;
-}
-
-app-footer {
-    background-color: #002B48;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
 }
 
 .copyright {

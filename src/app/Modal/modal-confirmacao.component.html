@@ -2,119 +2,152 @@
     <app-loader></app-loader>
 </div>
 
-<div *ngIf="modalListaDeCompras" class="modal">
-    <div class="buttons">
-        <button style="flex-direction: row-reverse;" type="button" (click)="fecharModal(false)">
-            <h1 style="margin: 0;">Voltar</h1> 
-        </button>
-        <div style="display: flex;">
-            <mat-icon>arrow_left</mat-icon>
-            <mat-icon>arrow_right</mat-icon>
+<div *ngIf="modalListaDeCompras">
+    <div class="modal-dialog" role="document" style="top: 23rem; background: #298AB4;">
+        <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
+                0px -8px 16px rgba(0, 0, 0, 0.3);">
+            <div class="modal-body p-4 text-center">
+                <h2 class="mb-0">Confirma lista?</h2>
+                <p class="mb-0">Você ainda pode modificá-la se desejar.</p>
+            </div>
+            <div class="modal-footer flex-nowrap p-0">
+                <button type="button"
+                    class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"
+                    (click)="fecharModal(true)" style="color: white;"><strong>Sim, confirma</strong></button>
+                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0"
+                    data-bs-dismiss="modal" (click)="fecharModal(false)" style="color: white;">Não, quero
+                    editar</button>
+            </div>
         </div>
-        <button style="flex-direction: row;" type="button" (click)="fecharModal(true)">
-            <h1 style="margin: 0;">Prosseguir</h1>
-        </button>
     </div>
 </div>
 
-<div *ngIf="modalMinhasListas" class="modal">
-    <h1>Esta foi sua lista nesse dia</h1>
-    <section class="lista">
-        <ul style="list-style-type: none;
-        padding: 0;
-        display: flex;
-        margin: 0;
-        flex-direction: column;
-        align-items: center;
-        width: 70%;">
-        <li *ngFor="let item of listaSelecionada" style="width: 100%;">
-            <i *ngIf="item.nome" style="
-                display: flex; 
-                justify-content: space-between;
-                align-items: center;"> 
-                <div>{{ item.nome }} (x{{ item.qtd }})</div>
-                <div style="flex-grow: 1; border-bottom: 1px dashed;"></div>
-                <div>R${{ (item.preco*item.qtd).toFixed(2) }}</div>
-            </i>
-        </li>
-        </ul>
-    </section>
-    <div class="buttons">
-        <button style="justify-content: flex-end;" type="button" (click)="fecharModal(false)">
-            <mat-icon>keyboard_return</mat-icon>
-        </button>
-        <button style="justify-content: flex-start;" type="button" (click)="fecharModal(true)">
-            <mat-icon>check</mat-icon>
-        </button>
+<div *ngIf="modalMinhasListas">
+    <div class="modal-dialog" role="document" style="    
+    top: 29rem;
+    background: #298AB4;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #298AB4;
+    overflow-y: auto;
+    text-align: center;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3), 0px -8px 16px rgba(0, 0, 0, 0.3);">
+        <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
+                0px -8px 16px rgba(0, 0, 0, 0.3);">
+            <div class="modal-header p-5 pb-4 border-bottom-0" style="justify-content: space-between;">
+                <h2 class="fw-bold mb-0">Sua lista nesse dia</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="fecharModal(false)" style="font-size: x-large;"></button>
+            </div>
+            <div class="modal-body">
+                <section class="lista">
+                    <ul style="list-style-type: none;
+                    padding: 0;
+                    display: flex;
+                    margin: 0;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 75%;">
+                        <li *ngFor="let item of listaSelecionada" style="
+                        width: 100%;     
+                        margin-bottom: 0.5rem;
+                        font-size: larger;">
+                            <i *ngIf="item.nome" style="
+                            display: flex; 
+                            justify-content: space-between;
+                            align-items: center;">
+                                <div>{{ item.nome }} (x{{ item.qtd }})</div>
+                                <div style="flex-grow: 1; border-bottom: 1px dashed;"></div>
+                                <div>R${{ (item.preco*item.qtd).toFixed(2) }}</div>
+                            </i>
+                        </li>
+                    </ul>
+                </section>
+                <button type="button" class="btn btn-lg btn-primary" data-bs-dismiss="modal" (click)="fecharModal(true)"
+                    style="margin: 2rem 0;">Usar lista</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<div *ngIf="modalAddItem" class="modal">
-    <h1>Informações do novo item</h1>
-    <section class="lista">
-        <ul style="list-style: none; padding: 0;">
-            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label for="nome" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Nome</label>
-                <input [(ngModel)]="newItemName" id="nome" type="text" style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
-            </li>
-            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label for="corredor" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Corredor</label>
-                <input [(ngModel)]="newItemAisle" id="corredor" type="number" style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
-            </li>
-            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label for="preco" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Preço</label>
-                <input [(ngModel)]="newItemPrice" id="preco" appCurrencyMask type="text" style="flex: 2; font-size: 20px; padding: 5px; width: 150px;" placeholder="R$ 0,00">
-            </li>
-        </ul>               
-    </section>
-    <div class="buttons">
-        <button style="justify-content: flex-end;" type="button" (click)="fecharModalAddItem(false)">
-            <mat-icon>keyboard_return</mat-icon>
-        </button>
-        <button style="justify-content: flex-start;" type="button" (click)="fecharModalAddItem(true)">
-            <mat-icon>check</mat-icon>
-        </button>
+<div *ngIf="modalAddItem">
+    <div class="modal-dialog" role="document" style="top: 16rem; background: #298AB4;">
+        <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
+                0px -8px 16px rgba(0, 0, 0, 0.3);">
+            <div class="modal-header p-5 pb-4 border-bottom-0" style="justify-content: space-between;">
+                <h1 class="mb-0 fs-2">Inserir novo item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="fecharModalAddItem(false)" style="font-size: x-large;"></button>
+            </div>
+            <div class="modal-body p-5 pt-0" style="text-align: center;">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-3" id="nome" placeholder=""
+                        [(ngModel)]="newItemName">
+                    <label style="color: #6c757d; font-size: medium;" for="nome">Nome</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control rounded-3" id="corredor" placeholder=""
+                        [(ngModel)]="newItemAisle">
+                    <label style="color: #6c757d; font-size: medium;" for="corredor">Corredor</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="texte" class="form-control rounded-3" id="preco" placeholder="" appCurrencyMask
+                        [(ngModel)]="newItemPrice">
+                    <label style="color: #6c757d; font-size: medium;" for="preco">Preço</label>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3"
+                    (click)="fecharModalAddItem(true)">Adicionar
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
-<div *ngIf="modalSearchItem" class="modal">
-    <h1 style="margin: 16px 0 0 0 !important;">
-        <mat-form-field>
-            <input 
-              type="text" 
-              placeholder="Busque um produto" 
-              id="itemInput"
-              matInput 
-              [formControl]="formControl" 
-              [matAutocomplete]="auto">
-            <mat-autocomplete 
-              #auto="matAutocomplete" 
-              (optionSelected)="procurarItem()">
-              <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
-                {{ option }}
-              </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>  
-    </h1>
-    <section class="lista">
-        <ul style="list-style: none; padding: 0;">
-            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label for="nome" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Nome</label>
-                <input readonly [(ngModel)]="searchItemName" id="nome" type="text" style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
-            </li>
-            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label for="corredor" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Corredor</label>
-                <input readonly [(ngModel)]="searchItemAisle" id="corredor" type="number" style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
-            </li>
-            <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <label for="preco" style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Preço</label>
-                <input readonly [(ngModel)]="searchItemPrice" id="preco" appCurrencyMask type="text" style="flex: 2; font-size: 20px; padding: 5px; width: 150px;" placeholder="R$ 0,00">
-            </li>
-        </ul>               
-    </section>
-    <div class="buttons">
-        <button style="justify-content: flex-end;" type="button" (click)="fecharModalAddItem(false)">
-            <mat-icon>keyboard_return</mat-icon>
-        </button>
+<div *ngIf="modalSearchItem">
+    <div class="modal-dialog" role="document" style="top: 16rem; background: #298AB4;">
+        <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
+                0px -8px 16px rgba(0, 0, 0, 0.3);">
+            <div class="modal-body p-5" style="text-align: center;">
+                <h2 class="fw-bold mb-0">Procure um produto</h2>
+
+                <mat-form-field>
+                    <input type="text" id="itemInput" matInput [formControl]="formControl" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="procurarItem()">
+                        <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <section class="lista">
+                    <ul style="list-style: none; padding: 0;">
+                        <li
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <label for="nome"
+                                style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Nome</label>
+                            <input readonly [(ngModel)]="searchItemName" id="nome" type="text"
+                                style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
+                        </li>
+                        <li
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <label for="corredor"
+                                style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Corredor</label>
+                            <input readonly [(ngModel)]="searchItemAisle" id="corredor" type="number"
+                                style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
+                        </li>
+                        <li
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <label for="preco"
+                                style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Preço</label>
+                            <input readonly [(ngModel)]="searchItemPrice" id="preco" appCurrencyMask type="text"
+                                style="flex: 2; font-size: 20px; padding: 5px; width: 150px;" placeholder="R$ 0,00">
+                        </li>
+                    </ul>
+                </section>
+
+                <button type="button" class="btn btn-lg btn-primary w-100" data-bs-dismiss="modal"
+                    (click)="fecharModalAddItem(false)">Voltar</button>
+            </div>
+        </div>
     </div>
 </div>
