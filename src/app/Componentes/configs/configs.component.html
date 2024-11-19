@@ -2,7 +2,84 @@
     <app-loader></app-loader>
 </div>
 
-<h1 style="margin-bottom: 5%;
+<div class="px-4 py-5" id="hanging-icons" style="height: 100vh;">
+    <h2 class="border-bottom" style="font-size: x-large !important; margin-bottom: 7vh;">Configurações</h2>
+    <div class="row g-4 row-cols-1 row-cols-lg-3" style="max-height: 90vh;
+    overflow: auto;">
+
+        <!-- Create -->
+        <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0"
+                style="width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 2rem;">
+                <i class="bi bi-file-earmark-plus" width="1em" height="1em"></i>
+            </div>
+            <div style="margin-left: 1rem;">
+                <h3 class="fs-2 text-body-emphasis">Adicionar um produto</h3>
+                <p>Está falando alguma coisa? Insira as informações necessárias para incluir um produto que você
+                    encontrou.</p>
+                <a style="float: right;" class="btn btn-primary" (click)="onAddItem()">
+                    Adicionar
+                </a>
+            </div>
+        </div>
+
+        <!-- Read -->
+        <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0"
+                style="width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 2rem;">
+                <i class="bi-search fs-5" width="1em" height="1em"></i>
+            </div>
+            <div style="margin-left: 1rem;">
+                <h3 class="fs-2 text-body-emphasis">Pesquisar um produto</h3>
+                <p>Dúvidas sobre as informações ou a disponibilidade de um produto em específico? Procure-o por aqui.
+                </p>
+                <a style="float: right;" class="btn btn-primary" (click)="onSearchItem()">
+                    Pesquisar
+                </a>
+            </div>
+        </div>
+
+        <!-- Update -->
+        <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0"
+                style="width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 2rem;">
+                <i class="bi bi-pencil fs-3" width="1em" height="1em"></i>
+            </div>
+            <div style="margin-left: 1rem;">
+                <h3 class="fs-2 text-body-emphasis">Atualizar um produto</h3>
+                <p>Encontrou algo errado ou desatualizado? Corrija e atualize as informações.</p>
+                <a style="float: right;" class="btn btn-primary">
+                    Atualizar
+                </a>
+            </div>
+        </div>
+
+        <!-- Delete -->
+        <div class="col d-flex align-items-start">
+            <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0"
+                style="width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 2rem;">
+                <i class="bi bi-trash" width="1em" height="1em"></i>
+            </div>
+            <div style="margin-left: 1rem;">
+                <h3 class="fs-2 text-body-emphasis">Deletar um produto</h3>
+                <p>Percebeu que algum produto não está mais a disposição nesta unidade? Remova-o.</p>
+                <a style="float: right;" class="btn btn-primary">
+                    Deletar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <h1 style="margin-bottom: 5%;
     font-size: xx-large;
     font-weight: 500;"> Configurações </h1>
 <section class="crud">
@@ -20,7 +97,7 @@
             <button class="opcao" (click)="onDeleteItem()"> Remover Item </button>
         </li>
     </ul>
-</section>
+</section> -->
 
 <app-modal-confirmacao [modalAddItem]="modalAddItem" [modalSearchItem]="modalSearchItem" *ngIf="modalAberto"
     (fecharAddItem)="fecharModal($event)" (fecharSearchItem)="fecharModal($event)" style="
