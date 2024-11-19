@@ -1,14 +1,31 @@
-<h1 style="text-align: center;
+<h1 *ngIf="minhasListas.length !== 0" style="text-align: center;
     font-size: xx-large;
     font-weight: 500;"> Minhas Listas </h1>
-<section class="lista">
-    <ul *ngIf="minhasListas.length !== 0">
-        <li *ngFor="let item of reversedList; let i = index">
-            <button class="item" (click)="redirectToShopping(i)"> {{ item }} </button>
-        </li>
-    </ul>
-    <h3 style="margin: 0;" *ngIf="minhasListas.length === 0">Você ainda não possui listas.</h3>
-</section>
+
+<div *ngIf="minhasListas.length > 0; else noList">
+    <div *ngFor="let item of formattedList; let i = index"
+        class="d-flex flex-column flex-md-row gap-4 py-md-5 align-items-center justify-content-center"
+        style="padding: 1.5vh !important;">
+
+        <div (click)="redirectToShopping(i)" class="list-group list-group-checkable d-grid gap-2 border-0">
+
+            <input class="list-group-item-check" type="radio" [id]="'option' + i" name="listGroupCheckableRadios"
+                [checked]="i === 0">
+
+            <label class="list-group-item rounded-3 py-3" [for]="'option' + i">
+                {{ item.label }}
+                <span class="d-block small" style="color: gray;">
+                    {{ item.description }}
+                </span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<ng-template #noList>
+    <h3 style="margin: 0;">Você ainda não possui listas.</h3>
+</ng-template>
+
 
 <app-modal-confirmacao [modalMinhasListas]="modalMinhasListas" [listaSelecionada]="listaSelecionada" *ngIf="modalAberto"
     (fechar)="fecharModal($event)" style="

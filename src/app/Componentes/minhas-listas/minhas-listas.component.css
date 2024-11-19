@@ -32,3 +32,21 @@ li {
     color: inherit;
     cursor: pointer;
 }
+
+.list-group-item-check {
+    display: none;
+}
+
+.list-group-item {
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: #298AB4;
+}
+
+/* Estilo quando o input associado está selecionado */
+.list-group-item-check:checked+.list-group-item {
+    border: 3px solid #002B48;
+}

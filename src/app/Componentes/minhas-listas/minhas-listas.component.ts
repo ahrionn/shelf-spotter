@@ -14,6 +14,7 @@ export class MinhasListasComponent {
   listaSelecionada: any;
   modalMinhasListas!: boolean;
   reversedList: string[] = [];
+  formattedList: any;
 
   constructor (
     private router: Router, 
@@ -27,6 +28,29 @@ export class MinhasListasComponent {
       this.minhasListas[i] = this.minhasListas[i][this.minhasListas[i].length - 1]
     }
     this.reversedList = [...this.minhasListas].reverse();
+
+    const monthNames = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    this.formattedList = this.reversedList.map(item => {
+      const lastSpaceIndex = item.lastIndexOf(' ');
+      const datePart = item.substring(0, lastSpaceIndex);
+      const timePart = item.substring(lastSpaceIndex + 1);
+    
+      const [day, month, yearWithDay] = datePart.split('/');
+      const yearWithWeekday = yearWithDay.split(' ');
+      const year = yearWithWeekday[0];
+      const weekday = yearWithWeekday[1].replace(/\(|\)/g, '');
+    
+      const monthName = monthNames[parseInt(month, 10) - 1];
+    
+      const label = `${day} de ${monthName} (${weekday})`;
+      const description = `Hora - ${timePart}`;
+    
+      return { label, description };
+    });
   }
 
   redirectToShopping(index: number) {
