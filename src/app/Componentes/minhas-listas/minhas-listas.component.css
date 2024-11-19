@@ -13,17 +13,10 @@ li {
     border-bottom: 1px solid white;
 }
 
-.lista {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-}
-
 .voltar {
     position: absolute;
-    top: 91vh;
-    right: 36vh;
+    top: 91%;
+    right: 81%;
     border: none;
     height: 45px;
     width: 45px;

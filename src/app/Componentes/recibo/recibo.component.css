@@ -1,19 +1,11 @@
 .lista {
-    width: 100%;
-    height: 80%;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-height: 65vh;
+    overflow-y: auto;
     border-bottom: 2px solid #002B48;
-    padding-top: 50px;
 }
 
 .lista-wrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
 }
 
 .lista ul {
