@@ -82,26 +82,6 @@
     </div>
 </div>
 
-<!-- <h1 style="margin-bottom: 5%;
-    font-size: xx-large;
-    font-weight: 500;"> Configurações </h1>
-<section class="crud">
-    <ul>
-        <li>
-            <button class="opcao" (click)="onAddItem()"> Adicionar Item </button>
-        </li>
-        <li>
-            <button class="opcao" (click)="onSearchItem()"> Buscar Item </button>
-        </li>
-        <li>
-            <button class="opcao" (click)="onUpdateItem()"> Atualizar Item </button>
-        </li>
-        <li>
-            <button class="opcao" (click)="onDeleteItem()"> Remover Item </button>
-        </li>
-    </ul>
-</section> -->
-
 <app-modal-confirmacao [modalAddItem]="modalAddItem" [modalSearchItem]="modalSearchItem" *ngIf="modalAberto"
     (fecharAddItem)="fecharModal($event)" (fecharSearchItem)="fecharModal($event)" style="
     position: fixed;
