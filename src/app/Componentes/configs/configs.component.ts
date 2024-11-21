@@ -13,6 +13,7 @@ export class ConfigsComponent {
 
   modalAddItem!: boolean;
   modalSearchItem!: boolean;
+  modalUpdateItem!: boolean;
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
   apiUrl = 'https://api-spotter.onrender.com';
@@ -40,20 +41,26 @@ export class ConfigsComponent {
   }
 
   onUpdateItem() {
-
+    this.modalUpdateItem = true;
+    this.modalAberto = true;
   }
 
   onDeleteItem() {
 
   }
 
-  fecharModal(objNewItem: any) {
+  fecharModal(objReq: any) {
     this.modalAddItem = false;
     this.modalSearchItem = false;
-    if (objNewItem !== undefined) {
+    this.modalUpdateItem = false;
+    if (objReq === undefined) {
+      this.modalAberto = false;
+      return;
+    }
+    if (objReq.tipoReq === 'adicionar') {
       this.modalAberto = false;
       this.isLoadingRequest = true;
-      this.http.post<any>(`${this.apiUrl}/api/addItem`, objNewItem).subscribe({
+      this.http.post<any>(`${this.apiUrl}/api/addItem`, objReq).subscribe({
         next: (responseAddItem) => {
           this.atualizaLista();
           this.toastr.show('Item adicionado com sucesso!');
@@ -63,6 +70,21 @@ export class ConfigsComponent {
           console.error('Erro ao adicionar item.', error);
         }
       });
+      return;
+    } if (objReq.tipoReq === 'atualizar') { 
+      this.modalAberto = false;
+      this.isLoadingRequest = true;
+      this.http.put<any>(`${this.apiUrl}/api/updateItem`, objReq).subscribe({
+        next: (responseUpdateItem) => {
+          this.atualizaLista();
+          this.toastr.show('Item atualizado com sucesso!');
+        },
+        error: (error) => {
+          this.isLoadingRequest = false;
+          console.error('Erro ao atualizar item.', error);
+        }
+      });
+      return;
     } else {
       this.modalAberto = false;
     }

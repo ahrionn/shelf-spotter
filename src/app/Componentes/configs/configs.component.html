@@ -57,7 +57,7 @@
             <div style="margin-left: 1rem;">
                 <h3 class="fs-2 text-body-emphasis">Atualizar um produto</h3>
                 <p>Encontrou algo errado ou desatualizado? Corrija e atualize as informações.</p>
-                <a style="float: right;" class="btn btn-primary">
+                <a style="float: right;" class="btn btn-primary" (click)="onUpdateItem()">
                     Atualizar
                 </a>
             </div>
@@ -82,8 +82,9 @@
     </div>
 </div>
 
-<app-modal-confirmacao [modalAddItem]="modalAddItem" [modalSearchItem]="modalSearchItem" *ngIf="modalAberto"
-    (fecharAddItem)="fecharModal($event)" (fecharSearchItem)="fecharModal($event)" style="
+<app-modal-confirmacao [modalAddItem]="modalAddItem" [modalSearchItem]="modalSearchItem"
+    [modalUpdateItem]="modalUpdateItem" *ngIf="modalAberto" (fecharAddItem)="fecharModal($event)"
+    (fecharSearchItem)="fecharModal($event)" (fecharUpdateItem)="fecharModal($event)" style="
     position: fixed;
     height: 100%;
     width: 100%;

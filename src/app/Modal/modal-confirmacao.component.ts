@@ -13,9 +13,11 @@ export class ModalConfirmacaoComponent {
   @Output() fechar: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() fecharAddItem: EventEmitter<any> = new EventEmitter<any>();
   @Output() fecharSearchItem: EventEmitter<any> = new EventEmitter<any>();
+  @Output() fecharUpdateItem: EventEmitter<any> = new EventEmitter<any>();
   @Input() modalMinhasListas!: boolean;
   @Input() modalAddItem!: boolean;
   @Input() modalSearchItem!: boolean;
+  @Input() modalUpdateItem!: boolean;
   @Input() modalListaDeCompras!: boolean;
   @Input() listaSelecionada: any;
 
@@ -26,6 +28,10 @@ export class ModalConfirmacaoComponent {
   searchItemName!: string;
   searchItemAisle!: string;
   searchItemPrice!: string;
+  updateItemID!: number;
+  updateItemName!: string;
+  updateItemAisle!: number;
+  updateItemPrice!: string;
   formControl = new FormControl();
   itensEstoque!: any;
   itensFiltrados: Observable<string[]> | undefined;
@@ -44,7 +50,7 @@ export class ModalConfirmacaoComponent {
   }
 
   ngOnInit() {
-    if (this.modalSearchItem) {
+    if (this.modalSearchItem || this.modalUpdateItem) {
       let estoqueCache = localStorage.getItem('itensEstoque');
       this.itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
     }
@@ -76,6 +82,7 @@ export class ModalConfirmacaoComponent {
 
       this.newItemPrice = this.newItemPrice.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
       let objNewItem = {
+        'tipoReq': 'adicionar',
         'nome': this.newItemName,
         'corredor': this.newItemAisle,
         'price': parseFloat(this.newItemPrice)
@@ -88,6 +95,29 @@ export class ModalConfirmacaoComponent {
 
   fecharModalSearchItem() {
     this.fecharSearchItem.emit();
+  }
+
+  fecharModalUpdateItem(updateItem: boolean) {
+    if (updateItem) {
+
+      let valor = this.updateItemPrice.replace(/[^\d,]/g, '');
+      valor = valor.replace(/,/g, '').replace(/(\d{2})$/, '.$1');
+      const valorCorreto = parseFloat(valor).toFixed(2);
+      this.updateItemPrice = `R$ ${valorCorreto.replace('.', ',')}`;
+
+      this.updateItemPrice = this.updateItemPrice.replace('R$ ', '').replace(/\./g, '').replace(',', '.');
+      let objUpdateItem = {
+        'tipoReq': 'atualizar',
+        'id': this.updateItemID,
+        'nome': this.updateItemName,
+        'corredor': this.updateItemAisle,
+        'price': parseFloat(this.updateItemPrice)
+      }
+
+      this.fecharUpdateItem.emit(objUpdateItem);
+    } else {
+      this.fecharUpdateItem.emit(undefined);
+    }
   }
 
   private _filter(value: string): string[] {
@@ -106,9 +136,17 @@ export class ModalConfirmacaoComponent {
     this.http.get<any[]>(`${this.apiUrl}/api/buscaDadosItem?nome=${itemSelecionado}`).subscribe({
       next: (response) => {
         this.isLoadingRequest = false;
-        this.searchItemName = response[0].nome;
-        this.searchItemAisle = response[0].corredor;
-        this.searchItemPrice = response[0].preco;
+        if (this.modalSearchItem) {
+          this.searchItemName = response[0].nome;
+          this.searchItemAisle = response[0].corredor;
+          this.searchItemPrice = response[0].preco;
+        }
+        if (this.modalUpdateItem) {
+          this.updateItemID = response[0].id;
+          this.updateItemName = response[0].nome;
+          this.updateItemAisle = response[0].corredor;
+          this.updateItemPrice = response[0].preco;
+        }
       },
       error: (error) => {
         this.isLoadingRequest = false;
