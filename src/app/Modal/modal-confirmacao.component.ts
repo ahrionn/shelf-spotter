@@ -14,10 +14,12 @@ export class ModalConfirmacaoComponent {
   @Output() fecharAddItem: EventEmitter<any> = new EventEmitter<any>();
   @Output() fecharSearchItem: EventEmitter<any> = new EventEmitter<any>();
   @Output() fecharUpdateItem: EventEmitter<any> = new EventEmitter<any>();
+  @Output() fecharDeleteItem: EventEmitter<any> = new EventEmitter<any>();
   @Input() modalMinhasListas!: boolean;
   @Input() modalAddItem!: boolean;
   @Input() modalSearchItem!: boolean;
   @Input() modalUpdateItem!: boolean;
+  @Input() modalDeleteItem!: boolean;
   @Input() modalListaDeCompras!: boolean;
   @Input() listaSelecionada: any;
 
@@ -32,12 +34,16 @@ export class ModalConfirmacaoComponent {
   updateItemName!: string;
   updateItemAisle!: number;
   updateItemPrice!: string;
+  deleteItemID!: number;
+  deleteItemName!: string;
+  deleteItemAisle!: number;
+  deleteItemPrice!: string;
   formControl = new FormControl();
   itensEstoque!: any;
   itensFiltrados: Observable<string[]> | undefined;
   isLoadingRequest: boolean = false;
-  apiUrl = 'https://api-spotter.onrender.com';
-  //apiUrl = 'http://localhost:3000';
+  //apiUrl = 'https://api-spotter.onrender.com';
+  apiUrl = 'http://localhost:3000';
 
   constructor(
     private toastr: ToastrService,
@@ -50,7 +56,7 @@ export class ModalConfirmacaoComponent {
   }
 
   ngOnInit() {
-    if (this.modalSearchItem || this.modalUpdateItem) {
+    if (this.modalSearchItem || this.modalUpdateItem || this.modalDeleteItem) {
       let estoqueCache = localStorage.getItem('itensEstoque');
       this.itensEstoque = estoqueCache !== null ? JSON.parse(estoqueCache) : [];
     }
@@ -120,6 +126,27 @@ export class ModalConfirmacaoComponent {
     }
   }
 
+  fecharModalDeleteItem(deleteItem: boolean) {
+    if (deleteItem) {
+      this.isLoadingRequest = true;
+      this.http.delete<any[]>(`${this.apiUrl}/api/deletaItem?id=${this.deleteItemID}`).subscribe({
+        next: (response) => {
+          this.isLoadingRequest = false;
+        },
+        error: (error) => {
+          this.isLoadingRequest = false;
+          console.error('Erro ao deletar item.', error);
+        }
+      });
+      let objDeleteItem = {
+        'tipoReq': 'deletar'
+      }
+      this.fecharDeleteItem.emit(objDeleteItem);
+    } else {
+      this.fecharDeleteItem.emit(undefined);
+    }
+  }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.itensEstoque
@@ -146,6 +173,12 @@ export class ModalConfirmacaoComponent {
           this.updateItemName = response[0].nome;
           this.updateItemAisle = response[0].corredor;
           this.updateItemPrice = response[0].preco;
+        }
+        if (this.modalDeleteItem) {
+          this.deleteItemID = response[0].id;
+          this.deleteItemName = response[0].nome;
+          this.deleteItemAisle = response[0].corredor;
+          this.deleteItemPrice = response[0].preco;
         }
       },
       error: (error) => {

@@ -161,6 +161,63 @@
     </div>
 </div>
 
+<div *ngIf="modalDeleteItem" style="
+    position: absolute;
+    top: 26%;
+    width: 100%;">
+    <div class="modal-dialog" role="document" style="background: #298AB4;">
+        <div class="modal-content" style="box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3),
+                0px -8px 16px rgba(0, 0, 0, 0.3);">
+            <div class="modal-body p-5" style="text-align: center;">
+                
+                <div class="modal-header pb-4 border-bottom-0" style="justify-content: space-between;">
+                    <h1 class="mb-0 fs-2">Qual item deseja deletar?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="fecharModalDeleteItem(false)" style="font-size: x-large;"></button>
+                </div>
+
+                <mat-form-field>
+                    <input type="text" id="itemInput" matInput [formControl]="formControl" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="procurarItem()">
+                        <mat-option *ngFor="let option of itensFiltrados | async" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <section>
+                    <ul style="list-style: none; padding: 0;">
+                        <li
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <label for="nome"
+                                style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Nome</label>
+                            <input readonly [(ngModel)]="deleteItemName" id="nome" type="text"
+                                style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
+                        </li>
+                        <li
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <label for="corredor"
+                                style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Corredor</label>
+                            <input readonly [(ngModel)]="deleteItemAisle" id="corredor" type="number"
+                                style="flex: 2; font-size: 20px; padding: 5px; width: 150px;">
+                        </li>
+                        <li
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <label for="preco"
+                                style="flex: 1; text-align: right; padding-right: 20px; font-size: 20px; width: 150px;">Preço</label>
+                            <input readonly [(ngModel)]="deleteItemPrice" id="preco" appCurrencyMask type="text"
+                                style="flex: 2; font-size: 20px; padding: 5px; width: 150px;" placeholder="R$ 0,00">
+                        </li>
+                    </ul>
+                </section>
+
+                <button type="button" class="btn btn-lg btn-primary w-100" data-bs-dismiss="modal"
+                    (click)="fecharModalDeleteItem(true)">Deletar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div *ngIf="modalUpdateItem" style="
     position: absolute;
     top: 26%;

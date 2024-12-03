@@ -14,10 +14,11 @@ export class ConfigsComponent {
   modalAddItem!: boolean;
   modalSearchItem!: boolean;
   modalUpdateItem!: boolean;
+  modalDeleteItem!: boolean;
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
-  apiUrl = 'https://api-spotter.onrender.com';
-  //apiUrl = 'http://localhost:3000';
+  //apiUrl = 'https://api-spotter.onrender.com';
+  apiUrl = 'http://localhost:3000';
 
   constructor(
     private router: Router,
@@ -46,13 +47,15 @@ export class ConfigsComponent {
   }
 
   onDeleteItem() {
-
+    this.modalDeleteItem = true;
+    this.modalAberto = true;
   }
 
   fecharModal(objReq: any) {
     this.modalAddItem = false;
     this.modalSearchItem = false;
     this.modalUpdateItem = false;
+    this.modalDeleteItem = false;
     if (objReq === undefined) {
       this.modalAberto = false;
       return;
@@ -71,7 +74,7 @@ export class ConfigsComponent {
         }
       });
       return;
-    } if (objReq.tipoReq === 'atualizar') { 
+    } if (objReq.tipoReq === 'atualizar') {
       this.modalAberto = false;
       this.isLoadingRequest = true;
       this.http.put<any>(`${this.apiUrl}/api/updateItem`, objReq).subscribe({
@@ -85,9 +88,13 @@ export class ConfigsComponent {
         }
       });
       return;
-    } else {
+    } if (objReq.tipoReq === 'deletar') {
       this.modalAberto = false;
+      this.isLoadingRequest = true;
+      this.atualizaLista();
+      this.toastr.show('Item deletado com sucesso!');
     }
+
   }
 
   atualizaLista() {

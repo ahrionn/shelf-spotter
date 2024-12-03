@@ -74,7 +74,7 @@
             <div style="margin-left: 1rem;">
                 <h3 class="fs-2 text-body-emphasis">Deletar um produto</h3>
                 <p>Percebeu que algum produto não está mais a disposição nesta unidade? Remova-o.</p>
-                <a style="float: right;" class="btn btn-primary">
+                <a style="float: right;" class="btn btn-primary" (click)="onDeleteItem()">
                     Deletar
                 </a>
             </div>
@@ -82,9 +82,17 @@
     </div>
 </div>
 
-<app-modal-confirmacao [modalAddItem]="modalAddItem" [modalSearchItem]="modalSearchItem"
-    [modalUpdateItem]="modalUpdateItem" *ngIf="modalAberto" (fecharAddItem)="fecharModal($event)"
-    (fecharSearchItem)="fecharModal($event)" (fecharUpdateItem)="fecharModal($event)" style="
+<app-modal-confirmacao 
+    [modalAddItem]="modalAddItem" 
+    [modalSearchItem]="modalSearchItem"
+    [modalUpdateItem]="modalUpdateItem" 
+    [modalDeleteItem]="modalDeleteItem" 
+    *ngIf="modalAberto" 
+    (fecharAddItem)="fecharModal($event)"
+    (fecharSearchItem)="fecharModal($event)" 
+    (fecharUpdateItem)="fecharModal($event)" 
+    (fecharDeleteItem)="fecharModal($event)" 
+    style="
     position: fixed;
     height: 100%;
     width: 100%;
