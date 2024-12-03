@@ -17,8 +17,8 @@ export class ConfigsComponent {
   modalDeleteItem!: boolean;
   modalAberto: boolean = false;
   isLoadingRequest: boolean = false;
-  //apiUrl = 'https://api-spotter.onrender.com';
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'https://api-spotter.onrender.com';
+  //apiUrl = 'http://localhost:3000';
 
   constructor(
     private router: Router,

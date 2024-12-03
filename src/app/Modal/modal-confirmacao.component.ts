@@ -42,8 +42,8 @@ export class ModalConfirmacaoComponent {
   itensEstoque!: any;
   itensFiltrados: Observable<string[]> | undefined;
   isLoadingRequest: boolean = false;
-  //apiUrl = 'https://api-spotter.onrender.com';
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'https://api-spotter.onrender.com';
+  //apiUrl = 'http://localhost:3000';
 
   constructor(
     private toastr: ToastrService,
