@@ -180,6 +180,7 @@ export class ModalConfirmacaoComponent {
           this.deleteItemAisle = response[0].corredor;
           this.deleteItemPrice = response[0].preco;
         }
+        this.formControl.setValue('');
       },
       error: (error) => {
         this.isLoadingRequest = false;
