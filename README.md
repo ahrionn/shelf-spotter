@@ -1,6 +1,7 @@
 # ShelfSpotter
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 17.3.0.
 
 ## Rodar projeto localmente
