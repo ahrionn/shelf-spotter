@@ -21,7 +21,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.timerService.start(() => {
-      console.log('teste');
       // Atualiza lista de itens a cada minuto
       this.http.get<any[]>(`${this.apiUrl}/api/listaEstoque`).subscribe({
         next: (response) => {
