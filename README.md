@@ -7,6 +7,7 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 ## Rodar projeto localmente
 
 Executar 'npm install' para instalar todas as dependências.
+
 Executar 'npm start' para rodar o projeto.
 
 ## API
